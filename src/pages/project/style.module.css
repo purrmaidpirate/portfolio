@@ -1,0 +1,177 @@
+.project {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 7rem 2.5rem 6rem;
+  font-family: "Inter", sans-serif;
+  color: #111;
+}
+
+/* Full-width hero image */
+.hero {
+  width: 100%;
+  margin-bottom: 3rem;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+.heroImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Header */
+.header {
+  margin-bottom: 2rem;
+}
+
+.headerTop {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.categoryLabel {
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #999;
+}
+
+.yearLabel {
+  font-size: 0.65rem;
+  font-weight: 400;
+  color: #bbb;
+  letter-spacing: 0.06em;
+}
+
+.title {
+  font-family: "Instrument Serif", serif;
+  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+  font-weight: 400;
+  font-style: italic;
+  margin: 0 0 0.5rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* Info row — compact horizontal meta */
+.infoRow {
+  display: flex;
+  gap: 3rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #eee;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.infoLabel {
+  font-size: 0.6rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #aaa;
+}
+
+.infoValue {
+  font-size: 0.85rem;
+  color: #333;
+  font-weight: 400;
+}
+
+/* Description — brief, single paragraph */
+.description {
+  max-width: 640px;
+  margin-bottom: 3rem;
+}
+
+.description p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #444;
+  font-weight: 300;
+  margin: 0;
+}
+
+/* Gallery — the main focus of the page */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.galleryImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Prev / Next nav */
+.projectNav {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 2.5rem;
+  border-top: 1px solid #eee;
+}
+
+.navPrev,
+.navNext {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.3s ease;
+}
+
+.navPrev:hover,
+.navNext:hover {
+  opacity: 0.5;
+  text-decoration: none;
+  color: inherit;
+}
+
+.navNext {
+  text-align: right;
+  align-items: flex-end;
+}
+
+.navLabel {
+  font-size: 0.6rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #aaa;
+  margin-bottom: 0.3rem;
+}
+
+.navTitle {
+  font-family: "Instrument Serif", serif;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .project {
+    padding: 6rem 1.5rem 4rem;
+  }
+
+  .infoRow {
+    gap: 2rem;
+  }
+}

@@ -1,0 +1,110 @@
+.hero {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  text-align: center;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.name {
+  font-family: "Instrument Serif", serif;
+  font-size: clamp(2rem, 5.5vw, 4.5rem);
+  font-weight: 400;
+  font-style: italic;
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.role {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(0.65rem, 1.1vw, 0.85rem);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  margin: 1rem 0 0;
+  opacity: 0.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Footer overlay — fixed to viewport like original Frame */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 1.5rem 2.5rem;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.footer a {
+  pointer-events: auto;
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.footer a:hover {
+  opacity: 0.5;
+  text-decoration: none;
+  color: #fff;
+}
+
+.footerCta {
+  font-family: "Instrument Serif", serif;
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #aff !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+}
+
+.footerRight {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.footerDivider {
+  opacity: 0.3;
+  font-weight: 200;
+  user-select: none;
+}
+
+.footerCredit {
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 1rem 1.25rem;
+    font-size: 0.65rem;
+  }
+
+  .footerRight {
+    gap: 0.75rem;
+  }
+}

@@ -1,0 +1,156 @@
+import type { Project, ProjectCategory } from "./types";
+
+export const categories: { value: ProjectCategory; label: string }[] = [
+  { value: "3d-animation", label: "3D Animation" },
+  { value: "ar-xr", label: "AR / XR" },
+  { value: "product-viz", label: "Product Visualization" },
+  { value: "mascot-branding", label: "Mascot & Branding" },
+  { value: "typography", label: "3D Typography" },
+  { value: "projection-mapping", label: "Projection Mapping" },
+  { value: "creative-tech", label: "Creative Tech" },
+];
+
+export const projects: Project[] = [
+  {
+    slug: "setu-character-animation",
+    title: "3D Character Animation",
+    subtitle: "Health supplement brand storytelling through 3D animation",
+    description:
+      "Created a 3D character animation for SETU India, conveying how their supplement products prevent eye damage from extended screen time. The animation was designed as a visually engaging social media post for young Indian users.\n\nThe process involved character & props design, 3D modeling, color & texture work, camera angles & composition, lighting, rigging, and animation.",
+    category: "3d-animation",
+    tags: ["Blender", "After Effects", "Character Design", "Rigging"],
+    year: "2023",
+    client: "SETU India",
+    role: "3D Animator & Character Designer",
+    thumbnail: { url: "https://www.artic.edu/iiif/2/d9bde524-38b2-4262-3338-e4d06a50746d/full/843,/0/default.jpg", width: 843, height: 551, alt: "3D character animation for SETU" },
+    images: [
+      { url: "https://www.artic.edu/iiif/2/3eaab3a3-2b47-9fdd-121c-050f6b8d9ccb/full/1200,/0/default.jpg", width: 1200, height: 1307, alt: "Character animation hero" },
+      { url: "https://www.artic.edu/iiif/2/5de78980-17d7-8fb5-83de-7b2ae4e997f2/full/1200,/0/default.jpg", width: 1200, height: 894, alt: "Animation process" },
+      { url: "https://www.artic.edu/iiif/2/a34d9d72-c4ec-0750-389e-a01215c9aab0/full/1200,/0/default.jpg", width: 1200, height: 1500, alt: "Character detail" },
+    ],
+    featured: true,
+  },
+  {
+    slug: "aunty-ji-ar-filter",
+    title: "Aunty Ji AR Filter",
+    subtitle: "Viral AR filter with 3.4M impressions",
+    description:
+      "An interactive AR filter that brings to life an illustration of a traditional South Asian 'Aunty Ji', a popular figure in Indian pop culture. The filter's real-time synchronization with the user's facial expressions creates an engaging and culturally rich user experience.\n\nThe filter went viral with over 3.4 Million impressions, 420K opens, and 13.2K shares. Built with Spark AR, the process included conceptualization, asset gathering, face tracking, lighting adjustments, syncing facial expressions, and testing.",
+    category: "ar-xr",
+    tags: ["Spark AR", "Face Tracking", "Illustration"],
+    year: "2023",
+    client: "Personal Project",
+    role: "AR Designer & Developer",
+    thumbnail: { url: "https://www.artic.edu/iiif/2/237c25a2-6051-a8e7-1610-a01938d4deab/full/843,/0/default.jpg", width: 843, height: 620, alt: "Aunty Ji AR filter" },
+    images: [
+      { url: "https://www.artic.edu/iiif/2/aa870b0d-5a1b-660a-6dc6-56c12109cf6e/full/1200,/0/default.jpg", width: 1200, height: 889, alt: "AR filter showcase" },
+      { url: "https://www.artic.edu/iiif/2/2e7e28aa-a77b-c7f8-852b-708c1171f928/full/1200,/0/default.jpg", width: 1200, height: 1613, alt: "Filter expressions" },
+      { url: "https://www.artic.edu/iiif/2/c95d58bf-fe9e-e5bb-2c71-ab8bad984759/full/1200,/0/default.jpg", width: 1200, height: 1512, alt: "User testing" },
+    ],
+    featured: true,
+  },
+  {
+    slug: "flipkart-product-renders",
+    title: "eCommerce Product Renders",
+    subtitle: "Realistic 3D lifestyle imagery for Flipkart",
+    description:
+      "Created realistic lifestyle images for various products and brands within the eCommerce shopping app of Flipkart. The 3D models were optimized for 360-degree and AR viewing capabilities.\n\nThe process included set/interior design, 3D modeling, color & texture, composition, lighting adjustments, render settings, testing & optimization, and cataloging products.",
+    category: "product-viz",
+    tags: ["Blender", "3D Modeling", "Product Visualization", "AR"],
+    year: "2022",
+    client: "Flipkart Camera",
+    role: "3D Designer",
+    thumbnail: { url: "https://www.artic.edu/iiif/2/f2021182-1302-f76f-97f1-4e7850030e3b/full/843,/0/default.jpg", width: 843, height: 647, alt: "Flipkart product renders" },
+    images: [
+      { url: "https://www.artic.edu/iiif/2/8111acce-c8ce-2ef3-5f32-61cd63905c7d/full/1200,/0/default.jpg", width: 1200, height: 928, alt: "Product lifestyle renders" },
+      { url: "https://www.artic.edu/iiif/2/a9a3e2fa-f7a4-2713-00ed-909062cb48d7/full/1200,/0/default.jpg", width: 1200, height: 1500, alt: "360 product view" },
+      { url: "https://www.artic.edu/iiif/2/7f1ea423-7538-3bc7-3d4a-0766522ab62f/full/1200,/0/default.jpg", width: 1200, height: 867, alt: "Lifestyle scene" },
+    ],
+    featured: true,
+  },
+  {
+    slug: "nippon-mascot",
+    title: "Mascot Design",
+    subtitle: "Brand mascot for Neo Paint Services by Nippon",
+    description:
+      "Created a brand mascot for an Indian painting service, aimed at changing the public perception of painters from mere laborers to skilled and respected professionals.\n\nThe comprehensive process involved concept & art direction, character & props design, 3D modeling, uniform creation, colors & texturing, rigging, lighting, camera angles & composition, render settings, editing, and organizing files and layers.",
+    category: "mascot-branding",
+    tags: ["Character Design", "3D Modeling", "Rigging", "Branding"],
+    year: "2022",
+    client: "Neo Paint Services by Nippon",
+    role: "3D Character Designer",
+    thumbnail: { url: "https://www.artic.edu/iiif/2/7c752046-744f-2f68-482b-a7fd42550f2b/full/843,/0/default.jpg", width: 843, height: 1062, alt: "Nippon paint mascot" },
+    images: [
+      { url: "https://www.artic.edu/iiif/2/8eccb189-92f3-353a-3337-c0778c2680d9/full/1200,/0/default.jpg", width: 1200, height: 963, alt: "Mascot design showcase" },
+    ],
+    featured: true,
+  },
+  {
+    slug: "36-days-of-type",
+    title: "36 Days of Type",
+    subtitle: "3D alphabets from primitive shapes and mixed materials",
+    description:
+      "An exploration of alphabets modeled in 3D, using primitive shapes to create unique forms. Created using various materials like clay, glass, metal, and fabric for the 36 Days of Type challenge.\n\nFeatured on 36 Days of Type, Design Milk, Design By Women, The HardCopy, and The Alipore Post.",
+    category: "typography",
+    tags: ["3D Modeling", "Illustration", "Visual Design"],
+    year: "2021",
+    client: "Personal Project",
+    role: "3D Designer & Illustrator",
+    thumbnail: { url: "https://www.artic.edu/iiif/2/50ac2e3e-1d1a-553f-6aeb-5c22cf323a8e/full/843,/0/default.jpg", width: 843, height: 611, alt: "36 Days of Type 3D alphabets" },
+    images: [
+      { url: "https://www.artic.edu/iiif/2/ec272cba-5f5c-dcc1-00e3-00dfdb042a52/full/1200,/0/default.jpg", width: 1200, height: 1500, alt: "3D type exploration" },
+    ],
+    featured: true,
+  },
+  {
+    slug: "chacha-configurator",
+    title: "3D Character Configurator",
+    subtitle: "Customizable 3D characters for a t-shirt brand",
+    description:
+      "Created a playful 3D character with realistic T-Shirts paired with interchangeable bottomwear, accessories, hairstyles and poses for a drop shipping T-shirt business. The print on the shirts is changeable by the client themselves.\n\nThe process included concept & art direction, character & props design, 3D modeling, rigging, animation, digital cloth simulation, color & texture, render settings, editing, and organizing files and layers.",
+    category: "creative-tech",
+    tags: ["Blender", "Marvelous Designer", "Character Design", "Cloth Simulation"],
+    year: "2022",
+    client: "ChaCha 420",
+    role: "3D Character Designer & Technical Artist",
+    thumbnail: { url: "https://www.artic.edu/iiif/2/c95d58bf-fe9e-e5bb-2c71-ab8bad984759/full/843,/0/default.jpg", width: 843, height: 1062, alt: "3D character configurator" },
+    images: [
+      { url: "https://www.artic.edu/iiif/2/91c51644-871f-cda9-82bb-94f4973ae339/full/1200,/0/default.jpg", width: 1200, height: 1439, alt: "Character configurator showcase" },
+    ],
+    featured: true,
+  },
+  {
+    slug: "domestic-oddities",
+    title: "Domestic Oddities",
+    subtitle: "Surreal 3D scenes exploring the quirky side of home",
+    description:
+      "A series of works created during the pandemic that merged into one common theme of Domestic Oddities - exploring the quirky, surreal side of 'home' during the lockdown.\n\nFive distinct rooms were created: living room, bath, kitchen, study, and laundry - each with its own surreal twist on domestic life.",
+    category: "creative-tech",
+    tags: ["Illustration", "3D Modeling", "Set Design"],
+    year: "2021",
+    client: "Personal Project",
+    role: "3D Artist & Set Designer",
+    thumbnail: { url: "https://www.artic.edu/iiif/2/4a04138f-43d8-cd9f-5ac4-478cd8828210/full/843,/0/default.jpg", width: 843, height: 607, alt: "Domestic Oddities surreal 3D scenes" },
+    images: [
+      { url: "https://www.artic.edu/iiif/2/18adfd19-6c76-989e-36ae-1343aa15701b/full/1200,/0/default.jpg", width: 1200, height: 1570, alt: "Surreal domestic scenes" },
+    ],
+    featured: true,
+  },
+  {
+    slug: "bmad-calendar",
+    title: "Calendar Design",
+    subtitle: "Paradise State of Mind - Animal rescue fundraiser calendar",
+    description:
+      "Calendar design and cover illustration created for an animal rescue shelter's annual fundraising calendar. The shelter is represented as a true paradise for the animals they rescue.\n\nThe project involved illustration, 3D modeling, art direction, and visual design for the Besant Memorial Animal Dispensary (BMAD).",
+    category: "mascot-branding",
+    tags: ["Illustration", "3D Modeling", "Art Direction", "Visual Design"],
+    year: "2022",
+    client: "Besant Memorial Animal Dispensary (BMAD)",
+    role: "Illustrator & 3D Designer",
+    thumbnail: { url: "https://www.artic.edu/iiif/2/b703b636-976c-b35b-8a8e-f8df3f5ba003/full/843,/0/default.jpg", width: 843, height: 1054, alt: "BMAD calendar design" },
+    images: [
+      { url: "https://www.artic.edu/iiif/2/c612af6e-f630-487e-5b85-3a15381065fc/full/1200,/0/default.jpg", width: 1200, height: 818, alt: "Calendar illustration" },
+    ],
+    featured: false,
+  },
+];

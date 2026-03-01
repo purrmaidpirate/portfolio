@@ -1,23 +1,24 @@
-import * as React from "react";
-import manifest from "~/src/artworks/manifest.json";
-import { Frame } from "~/src/frame";
-import { InfiniteCanvas } from "~/src/infinite-canvas";
-import type { MediaItem } from "~/src/infinite-canvas/types";
-import { PageLoader } from "~/src/loader";
+import { Routes, Route } from "react-router-dom";
+import { ScrollToTop } from "~/src/components/scroll-to-top";
+import { Nav } from "~/src/nav";
+import { AboutPage } from "~/src/pages/about";
+import { BlogPage } from "~/src/pages/blog";
+import { HomePage } from "~/src/pages/home";
+import { ProjectPage } from "~/src/pages/project";
+import { WorkPage } from "~/src/pages/work";
 
 export function App() {
-  const [media] = React.useState<MediaItem[]>(manifest);
-  const [textureProgress, setTextureProgress] = React.useState(0);
-
-  if (!media.length) {
-    return <PageLoader progress={0} />;
-  }
-
   return (
     <>
-      <Frame />
-      <PageLoader progress={textureProgress} />
-      <InfiniteCanvas media={media} onTextureProgress={setTextureProgress} />
+      <ScrollToTop />
+      <Nav />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/work" element={<WorkPage />} />
+        <Route path="/work/:slug" element={<ProjectPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+      </Routes>
     </>
   );
 }

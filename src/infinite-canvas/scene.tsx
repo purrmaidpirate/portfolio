@@ -18,6 +18,7 @@ import {
   VELOCITY_DECAY,
   VELOCITY_LERP,
 } from "./constants";
+import { interactionState } from "./interaction-state";
 import styles from "./style.module.css";
 import { getTexture } from "./texture-manager";
 import type { ChunkData, InfiniteCanvasProps, MediaItem, PlaneData } from "./types";
@@ -69,6 +70,7 @@ function MediaPlane({
   chunkCy,
   chunkCz,
   cameraGridRef,
+  onPlaneClick,
 }: {
   position: THREE.Vector3;
   scale: THREE.Vector3;
@@ -77,6 +79,7 @@ function MediaPlane({
   chunkCy: number;
   chunkCz: number;
   cameraGridRef: React.RefObject<CameraGridState>;
+  onPlaneClick?: (slug: string) => void;
 }) {
   const meshRef = React.useRef<THREE.Mesh>(null);
   const materialRef = React.useRef<THREE.MeshBasicMaterial>(null);
@@ -129,6 +132,26 @@ function MediaPlane({
     material.depthWrite = isFullyOpaque;
     mesh.visible = state.opacity > INVIS_THRESHOLD;
   });
+
+  const handleClick = React.useCallback(
+    (e: { stopPropagation: () => void }) => {
+      if (media.slug && onPlaneClick && !interactionState.wasDragging) {
+        e.stopPropagation();
+        onPlaneClick(media.slug);
+      }
+    },
+    [media.slug, onPlaneClick],
+  );
+
+  const handlePointerOver = React.useCallback(() => {
+    if (media.slug && onPlaneClick) {
+      document.body.style.cursor = "pointer";
+    }
+  }, [media.slug, onPlaneClick]);
+
+  const handlePointerOut = React.useCallback(() => {
+    document.body.style.cursor = "grab";
+  }, []);
 
   // Calculate display scale from media dimensions (from manifest)
   const displayScale = React.useMemo(() => {
@@ -184,7 +207,16 @@ function MediaPlane({
   }
 
   return (
-    <mesh ref={meshRef} position={position} scale={displayScale} visible={false} geometry={PLANE_GEOMETRY}>
+    <mesh
+      ref={meshRef}
+      position={position}
+      scale={displayScale}
+      visible={false}
+      geometry={PLANE_GEOMETRY}
+      onClick={handleClick}
+      onPointerOver={handlePointerOver}
+      onPointerOut={handlePointerOut}
+    >
       <meshBasicMaterial ref={materialRef} transparent opacity={0} side={THREE.DoubleSide} />
     </mesh>
   );
@@ -196,12 +228,14 @@ function Chunk({
   cz,
   media,
   cameraGridRef,
+  onPlaneClick,
 }: {
   cx: number;
   cy: number;
   cz: number;
   media: MediaItem[];
   cameraGridRef: React.RefObject<CameraGridState>;
+  onPlaneClick?: (slug: string) => void;
 }) {
   const [planes, setPlanes] = React.useState<PlaneData[] | null>(null);
 
@@ -248,6 +282,7 @@ function Chunk({
             chunkCy={cy}
             chunkCz={cz}
             cameraGridRef={cameraGridRef}
+            onPlaneClick={onPlaneClick}
           />
         );
       })}
@@ -287,7 +322,7 @@ const createInitialState = (camZ: number): ControllerState => ({
   pendingChunk: null,
 });
 
-function SceneController({ media, onTextureProgress }: { media: MediaItem[]; onTextureProgress?: (progress: number) => void }) {
+function SceneController({ media, onTextureProgress, onPlaneClick }: { media: MediaItem[]; onTextureProgress?: (progress: number) => void; onPlaneClick?: (slug: string) => void }) {
   const { camera, gl } = useThree();
   const isTouchDevice = useIsTouchDevice();
   const [, getKeys] = useKeyboardControls<keyof KeyboardKeys>();
@@ -322,10 +357,13 @@ function SceneController({ media, onTextureProgress }: { media: MediaItem[]; onT
       // Just start dragging - keep drift frozen at current value
       s.isDragging = true;
       s.lastMouse = { x: e.clientX, y: e.clientY };
+      interactionState.dragDistance = 0;
+      interactionState.wasDragging = false;
       setCursor("grabbing");
     };
 
     const onMouseUp = () => {
+      interactionState.wasDragging = interactionState.dragDistance > 5;
       s.isDragging = false;
       setCursor("grab");
     };
@@ -343,6 +381,7 @@ function SceneController({ media, onTextureProgress }: { media: MediaItem[]; onT
       };
 
       if (s.isDragging) {
+        interactionState.dragDistance += Math.abs(e.clientX - s.lastMouse.x) + Math.abs(e.clientY - s.lastMouse.y);
         s.targetVel.x -= (e.clientX - s.lastMouse.x) * 0.025;
         s.targetVel.y += (e.clientY - s.lastMouse.y) * 0.025;
         s.lastMouse = { x: e.clientX, y: e.clientY };
@@ -504,7 +543,7 @@ function SceneController({ media, onTextureProgress }: { media: MediaItem[]; onT
   return (
     <>
       {chunks.map((chunk) => (
-        <Chunk key={chunk.key} cx={chunk.cx} cy={chunk.cy} cz={chunk.cz} media={media} cameraGridRef={cameraGridRef} />
+        <Chunk key={chunk.key} cx={chunk.cx} cy={chunk.cy} cz={chunk.cz} media={media} cameraGridRef={cameraGridRef} onPlaneClick={onPlaneClick} />
       ))}
     </>
   );
@@ -513,6 +552,7 @@ function SceneController({ media, onTextureProgress }: { media: MediaItem[]; onT
 export function InfiniteCanvasScene({
   media,
   onTextureProgress,
+  onPlaneClick,
   showFps = false,
   showControls = false,
   cameraFov = 60,
@@ -542,7 +582,7 @@ export function InfiniteCanvasScene({
         >
           <color attach="background" args={[backgroundColor]} />
           <fog attach="fog" args={[fogColor, fogNear, fogFar]} />
-          <SceneController media={media} onTextureProgress={onTextureProgress} />
+          <SceneController media={media} onTextureProgress={onTextureProgress} onPlaneClick={onPlaneClick} />
           {showFps && <Stats className={styles.stats} />}
         </Canvas>
 

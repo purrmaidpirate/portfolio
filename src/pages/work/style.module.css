@@ -1,0 +1,174 @@
+.work {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 7rem 2.5rem 6rem;
+  font-family: "Inter", sans-serif;
+  color: #111;
+}
+
+.heading {
+  font-family: "Instrument Serif", serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 400;
+  font-style: italic;
+  margin: 0 0 1.5rem;
+  letter-spacing: -0.02em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.filter,
+.filterActive {
+  appearance: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: transparent;
+  color: #bbb;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.filter:hover {
+  color: #111;
+}
+
+.filterActive {
+  color: #111;
+}
+
+/* Staggered 2-column grid */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem 3rem;
+}
+
+.card {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.4s ease;
+}
+
+.card:hover {
+  opacity: 0.75;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Left column: flush */
+.cardLeft {
+  grid-column: 1;
+}
+
+/* Right column: offset down for stagger */
+.cardRight {
+  grid-column: 2;
+  margin-top: 6rem;
+}
+
+.cardNumber {
+  font-family: "Inter", sans-serif;
+  font-size: 0.6rem;
+  font-weight: 400;
+  color: #ccc;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.cardImage {
+  overflow: hidden;
+  background: #f0f0f0;
+  margin-bottom: 1rem;
+}
+
+.cardImage img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover .cardImage img {
+  transform: scale(1.03);
+}
+
+.cardInfo {
+  padding: 0;
+}
+
+.cardTitle {
+  font-family: "Instrument Serif", serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  font-style: italic;
+  margin: 0 0 0.2rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.cardCategory {
+  font-size: 0.6rem;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .work {
+    padding: 5rem 1.25rem 3rem;
+  }
+
+  .heading {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    margin-bottom: 1rem;
+  }
+
+  .filters {
+    gap: 0.75rem 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .cardLeft,
+  .cardRight {
+    grid-column: 1;
+    margin-top: 0;
+  }
+
+  .card + .card {
+    margin-top: 2rem;
+  }
+
+  .cardNumber {
+    margin-bottom: 0.5rem;
+  }
+
+  .cardImage {
+    margin-bottom: 0.75rem;
+  }
+
+  .cardTitle {
+    font-size: 1.1rem;
+  }
+}
