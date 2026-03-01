@@ -1,36 +1,29 @@
 import { PageTransition } from "~/src/components/page-transition";
+import { SEMESTERS, sortedBlogPosts } from "~/src/data/blog-posts";
+import type { BlogPost } from "~/src/data/blog-posts";
 import styles from "./style.module.css";
 
-type BlogPost = {
-  slug: string;
-  title: string;
-  date: string;
-  excerpt: string;
-  image?: string;
-};
-
-const placeholderPosts: BlogPost[] = [
-  {
-    slug: "hello-itp",
-    title: "Starting at NYU ITP",
-    date: "2024-09-01",
-    excerpt:
-      "Reflections on beginning my Masters at the Interactive Telecommunications Program and what I hope to explore in immersive media, projection mapping, and creative technology.",
-    image: "https://www.artic.edu/iiif/2/a49c5ada-f461-d7d1-0f1b-468ac577a872/full/1200,/0/default.jpg",
-  },
-  {
-    slug: "projection-mapping-explorations",
-    title: "Projection Mapping Explorations",
-    date: "2025-02-15",
-    excerpt: "",
-  },
-  {
-    slug: "game-mechanics-communication",
-    title: "Game Mechanics as Communication",
-    date: "2025-06-01",
-    excerpt: "",
-  },
-];
+function PostRow({ post }: { post: BlogPost }) {
+  return (
+    <a
+      href={post.notionUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={styles.postRow}
+    >
+      <span className={styles.postLeft}>
+        <span className={styles.postTitle}>{post.title}</span>
+        <span className={styles.courseTag}>{post.course}</span>
+      </span>
+      <time className={styles.postDate}>
+        {new Date(post.date).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "short",
+        })}
+      </time>
+    </a>
+  );
+}
 
 export function BlogPage() {
   return (
@@ -38,35 +31,21 @@ export function BlogPage() {
       <main className={styles.blog}>
         <h1 className={styles.heading}>Blog</h1>
 
-        <div className={styles.posts}>
-          {placeholderPosts.map((post, index) => {
-            const isFeatured = index === 0 && post.image;
+        {SEMESTERS.map((semester) => {
+          const posts = sortedBlogPosts.filter((p) => p.semester === semester);
+          if (posts.length === 0) return null;
 
-            if (isFeatured) {
-              return (
-                <article key={post.slug} className={styles.featuredPost}>
-                  <div className={styles.featuredImage}>
-                    <img src={post.image} alt={post.title} />
-                  </div>
-                  <time className={styles.date}>
-                    {new Date(post.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
-                  </time>
-                  <h2 className={styles.featuredTitle}>{post.title}</h2>
-                  <p className={styles.excerpt}>{post.excerpt}</p>
-                </article>
-              );
-            }
-
-            return (
-              <article key={post.slug} className={styles.postRow}>
-                <h2 className={styles.postTitle}>{post.title}</h2>
-                <time className={styles.postDate}>
-                  {new Date(post.date).toLocaleDateString("en-US", { year: "numeric", month: "short" })}
-                </time>
-              </article>
-            );
-          })}
-        </div>
+          return (
+            <section key={semester} className={styles.semesterSection}>
+              <h2 className={styles.semesterHeading}>{semester}</h2>
+              <div className={styles.posts}>
+                {posts.map((post) => (
+                  <PostRow key={post.id} post={post} />
+                ))}
+              </div>
+            </section>
+          );
+        })}
       </main>
     </PageTransition>
   );

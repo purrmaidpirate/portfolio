@@ -17,72 +17,70 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Semester grouping */
+.semesterSection {
+  margin-bottom: 3rem;
+}
+
+.semesterHeading {
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #aaa;
+  margin: 0 0 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
 .posts {
   display: flex;
   flex-direction: column;
   gap: 0;
 }
 
-/* Featured post */
-.featuredPost {
-  padding: 0 0 2.5rem;
-  margin-bottom: 1.5rem;
-  border-bottom: 1px solid #eee;
-}
-
-.featuredImage {
-  width: 100%;
-  margin-bottom: 1.25rem;
-  overflow: hidden;
-  background: #f0f0f0;
-}
-
-.featuredImage img {
-  width: 100%;
-  height: auto;
-  display: block;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-}
-
-.featuredTitle {
-  font-family: "Instrument Serif", serif;
-  font-size: 1.75rem;
-  font-weight: 400;
-  margin: 0.5rem 0 0.4rem;
-  line-height: 1.2;
-}
-
-.date {
-  font-size: 0.65rem;
-  font-weight: 400;
-  color: #aaa;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.excerpt {
-  font-size: 0.85rem;
-  line-height: 1.7;
-  color: #777;
-  margin: 0;
-  font-weight: 300;
-}
-
-/* Regular posts — title left, date right, no border */
+/* Post rows — title + course tag left, date right */
 .postRow {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 0.75rem 0;
+  padding: 0.65rem 0;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.15s;
+}
+
+.postRow:hover {
+  opacity: 0.5;
+}
+
+.postLeft {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .postTitle {
   font-family: "Instrument Serif", serif;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 400;
   margin: 0;
   line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.courseTag {
+  font-size: 0.6rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #999;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .postDate {
