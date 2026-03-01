@@ -23,10 +23,10 @@ export const projects: Project[] = [
     client: "ITP — Game Design & Psychology of Choice",
     role: "Game Designer & Fabricator",
     thumbnail: {
-      url: "/projects/rand-master/final-board-flat.jpg",
-      width: 1080,
-      height: 1440,
-      alt: "Rand()Master final laser-cut board, flat view",
+      url: "/projects/rand-master/thumbnail-painting.png",
+      width: 1365,
+      height: 1820,
+      alt: "Rand()Master — Renaissance oil painting of the game in play",
     },
     images: [
       {
