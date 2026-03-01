@@ -12,6 +12,51 @@ export const categories: { value: ProjectCategory; label: string }[] = [
 
 export const projects: Project[] = [
   {
+    slug: "rand-master",
+    title: "Rand()Master",
+    subtitle: "A chess variant where randomness determines fate",
+    description:
+      "Rand()Master is a two-phase board game designed in collaboration with Alanna Okun for ITP's Game Design & The Psychology of Choice course. The game strips chess of its familiarity by introducing randomness into the placement phase — before a single strategic move is made, the board itself is unpredictable.\n\nPhase one is a race: a gamemaster calls out random numbers 1–64, and the first player to spot the matching colored token on the board claims that square for their next chess piece. Pieces enter in order of ascending hierarchy (pawn to king), creating chaotic, asymmetrical starting positions. Once all pieces are placed, the board is rotated a random number of times, and then standard chess begins — with whatever hand randomness dealt you.\n\nThe final version evolved from a lo-fi prototype (a roll-up board with foam tokens) into a laser-cut wooden board with pastel-colored acrylic tiles and small resin pieces etched with chess icons. Playtesting with four players revealed edge cases around number visibility, piece doubling, and board orientation — all of which became features.",
+    category: "creative-tech",
+    tags: ["Game Design", "Laser Cutting", "Fabrication", "Board Game", "ITP"],
+    year: "2025",
+    client: "ITP — Game Design & Psychology of Choice",
+    role: "Game Designer & Fabricator",
+    thumbnail: {
+      url: "/projects/rand-master/final-board-flat.jpg",
+      width: 1080,
+      height: 1440,
+      alt: "Rand()Master final laser-cut board, flat view",
+    },
+    images: [
+      {
+        url: "/projects/rand-master/final-board-angled.jpg",
+        width: 1080,
+        height: 1440,
+        alt: "Rand()Master laser-cut board with pink and green acrylic tiles",
+      },
+      {
+        url: "/projects/rand-master/playtesting-1.jpg",
+        width: 1080,
+        height: 1440,
+        alt: "Playtesting the final version with classmates",
+      },
+      {
+        url: "/projects/rand-master/playtesting-2.jpg",
+        width: 1080,
+        height: 1440,
+        alt: "Explaining the prototype during early playtesting",
+      },
+      {
+        url: "/projects/rand-master/board-setup.jpg",
+        width: 1080,
+        height: 1440,
+        alt: "Prototype chess board with colored numbered foam tokens",
+      },
+    ],
+    featured: true,
+  },
+  {
     slug: "setu-character-animation",
     title: "3D Character Animation",
     subtitle: "Health supplement brand storytelling through 3D animation",
