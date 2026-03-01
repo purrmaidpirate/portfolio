@@ -90,11 +90,20 @@ of [SCENE DESCRIPTION].
 
 ---
 
+## Preferred Source Image Types
+
+- **Objects / final product shots** → Baroque **still life** treatment (Jan de Heem / Pieter Claesz style) — board/object on dark velvet-draped table, single candle, black background, gold frame. Best for showing the crafted thing itself.
+- **People in action / playtesting** → Dutch Golden Age **genre scene** treatment (Vermeer / Caravaggio style) — chiaroscuro figures, warm amber light, workshop or interior background. Best when people + interaction tell the story.
+
+Flat white-background product shots → always go still life. The AI will place them in a dark, candlelit interior automatically.
+
+---
+
 ## Completed Projects
 
-| Project | Source Image | Status |
-|---------|-------------|--------|
-| Rand()Master | `playtesting-2.jpg` (game in action, ITP shop) | ✅ Done |
+| Project | Source Image | Style | Status |
+|---------|-------------|-------|--------|
+| Rand()Master | `final-board-flat.jpg` (final laser-cut board, white bg) | Baroque still life — candlelit, gold frame, dark velvet | ✅ Done |
 
 ---
 
