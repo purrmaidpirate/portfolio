@@ -24,9 +24,9 @@ export const projects: Project[] = [
     role: "Game Designer & Fabricator",
     thumbnail: {
       url: "/projects/rand-master/thumbnail-painting.jpg",
-      width: 1365,
-      height: 1820,
-      alt: "Rand()Master — Renaissance oil painting of the game in play",
+      width: 1792,
+      height: 2400,
+      alt: "Rand()Master — Baroque oil painting of the game board",
     },
     images: [
       {
@@ -52,6 +52,52 @@ export const projects: Project[] = [
         width: 1080,
         height: 1440,
         alt: "Prototype chess board with colored numbered foam tokens",
+      },
+    ],
+    sections: [
+      {
+        heading: "The Conceit",
+        body: "Chess is a game of pure strategy — in theory. Rand()Master asks what happens when the starting position is nobody's fault. Before a single strategic move is made, a chaotic placement race determines where each piece begins. Neither player controls where they end up. Working with Alanna Okun for ITP's Game Design & The Psychology of Choice, the project set out to strip chess of its familiarity by introducing randomness at the very moment the game usually demands the most deliberate planning.",
+        image: {
+          url: "/projects/rand-master/board-setup.jpg",
+          width: 1080,
+          height: 1440,
+          alt: "Prototype chess board with colored numbered foam tokens",
+        },
+        imagePosition: "right",
+      },
+      {
+        heading: "Phase One: The Race",
+        body: "A gamemaster calls out random numbers between 1 and 64. Both players scan their side of the board — each square marked with a colored numbered token — racing to be first to find and claim that square for their next piece. Pieces enter in ascending order of chess hierarchy: all pawns first, then rooks, bishops, knights, queen, and finally king. The result is an asymmetrical starting position that neither player planned or predicted.",
+        image: {
+          url: "/projects/rand-master/playtesting-2.jpg",
+          width: 1080,
+          height: 1440,
+          alt: "Explaining the placement phase during early playtesting",
+        },
+        imagePosition: "left",
+      },
+      {
+        heading: "Phase Two: Chaos Chess",
+        body: "Once all 16 pieces per side are placed, the entire board is rotated a random number of times before standard chess begins. You play whatever hand randomness dealt you — familiar pieces in unfamiliar territory, with all the pressure of real chess and none of the opening theory to fall back on. The chaotic setup becomes a strategic puzzle.",
+        image: {
+          url: "/projects/rand-master/playtesting-1.jpg",
+          width: 1080,
+          height: 1440,
+          alt: "Playtesting the final version with classmates",
+        },
+        imagePosition: "right",
+      },
+      {
+        heading: "Making the Object",
+        body: "The final board evolved from a roll-up mat with foam tokens into a laser-cut wooden board with pastel pink and green acrylic tiles — one color per player. Chess pieces are small resin figures etched with standard icons. Every design choice was driven by playtesting: larger numerals for faster scanning, distinct corner markers for orientation after rotation, a strict placement order to resolve simultaneous claims. Fabricated at ITP's shop over two iterations.",
+        image: {
+          url: "/projects/rand-master/final-board-angled.jpg",
+          width: 1080,
+          height: 1440,
+          alt: "Final laser-cut board with pink and green acrylic tiles, angled view",
+        },
+        imagePosition: "left",
       },
     ],
     featured: true,

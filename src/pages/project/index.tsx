@@ -15,19 +15,23 @@ export function ProjectPage() {
   const prev = idx > 0 ? projects[idx - 1] : null;
   const next = idx < projects.length - 1 ? projects[idx + 1] : null;
 
+  const hasSections = project.sections && project.sections.length > 0;
+
   return (
     <PageTransition>
       <main className={styles.project}>
-        {/* Full-width hero */}
+        {/* Painting hero — centered, portrait */}
         <div className={styles.hero}>
           <img
-            src={project.images[0]?.url ?? project.thumbnail.url}
-            alt={project.images[0]?.alt ?? project.thumbnail.alt}
+            src={project.thumbnail.url}
+            alt={project.thumbnail.alt}
+            width={project.thumbnail.width}
+            height={project.thumbnail.height}
             className={styles.heroImage}
           />
         </div>
 
-        {/* Compact header: title + minimal meta inline */}
+        {/* Header */}
         <header className={styles.header}>
           <div className={styles.headerTop}>
             <span className={styles.categoryLabel}>
@@ -39,7 +43,7 @@ export function ProjectPage() {
           <p className={styles.subtitle}>{project.subtitle}</p>
         </header>
 
-        {/* Brief info row */}
+        {/* Meta */}
         <div className={styles.infoRow}>
           <div className={styles.infoItem}>
             <span className={styles.infoLabel}>Client</span>
@@ -51,35 +55,62 @@ export function ProjectPage() {
           </div>
         </div>
 
-        {/* Short description — just the first paragraph */}
+        {/* Description — intro only when sections present, full text otherwise */}
         <div className={styles.description}>
-          <p>{project.description.split("\n\n")[0]}</p>
+          {hasSections ? (
+            <p>{project.description.split("\n\n")[0]}</p>
+          ) : (
+            project.description
+              .split("\n\n")
+              .map((para, i) => <p key={i}>{para}</p>)
+          )}
         </div>
 
-        {/* Image gallery — the main focus */}
-        <div className={styles.gallery}>
-          {/* Thumbnail as second image */}
-          <img
-            src={project.thumbnail.url}
-            alt={project.thumbnail.alt}
-            width={project.thumbnail.width}
-            height={project.thumbnail.height}
-            loading="lazy"
-            className={styles.galleryImage}
-          />
-          {/* Additional gallery images */}
-          {project.images.slice(1).map((img, i) => (
-            <img
-              key={`img-${i}`}
-              src={img.url}
-              alt={img.alt}
-              width={img.width}
-              height={img.height}
-              loading="lazy"
-              className={styles.galleryImage}
-            />
-          ))}
-        </div>
+        {/* Narrative sections */}
+        {hasSections ? (
+          <div className={styles.sections}>
+            {project.sections!.map((section, i) => (
+              <div
+                key={i}
+                className={`${styles.section} ${
+                  section.imagePosition === "left" ? styles.sectionFlipped : ""
+                }`}
+              >
+                <div className={styles.sectionText}>
+                  {section.heading && (
+                    <h2 className={styles.sectionHeading}>{section.heading}</h2>
+                  )}
+                  <p className={styles.sectionBody}>{section.body}</p>
+                </div>
+                {section.image && (
+                  <img
+                    src={section.image.url}
+                    alt={section.image.alt}
+                    width={section.image.width}
+                    height={section.image.height}
+                    loading="lazy"
+                    className={styles.sectionImage}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+        ) : (
+          /* Gallery fallback for projects without sections */
+          <div className={styles.gallery}>
+            {project.images.map((img, i) => (
+              <img
+                key={i}
+                src={img.url}
+                alt={img.alt}
+                width={img.width}
+                height={img.height}
+                loading="lazy"
+                className={styles.galleryImage}
+              />
+            ))}
+          </div>
+        )}
 
         {/* Prev / Next */}
         <nav className={styles.projectNav}>

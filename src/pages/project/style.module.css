@@ -6,15 +6,15 @@
   color: #111;
 }
 
-/* Full-width hero image */
+/* Painting hero — centered portrait, not full-bleed */
 .hero {
-  width: 100%;
+  display: flex;
+  justify-content: center;
   margin-bottom: 3rem;
-  overflow: hidden;
-  background: #f0f0f0;
 }
 
 .heroImage {
+  max-width: 460px;
   width: 100%;
   height: auto;
   display: block;
@@ -65,7 +65,7 @@
   font-weight: 300;
 }
 
-/* Info row — compact horizontal meta */
+/* Info row */
 .infoRow {
   display: flex;
   gap: 3rem;
@@ -94,10 +94,10 @@
   font-weight: 400;
 }
 
-/* Description — brief, single paragraph */
+/* Description intro */
 .description {
   max-width: 640px;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 }
 
 .description p {
@@ -105,24 +105,82 @@
   line-height: 1.8;
   color: #444;
   font-weight: 300;
+  margin: 0 0 1rem;
+}
+
+.description p:last-child {
+  margin-bottom: 0;
+}
+
+/* Narrative sections */
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  margin-bottom: 6rem;
+}
+
+.section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+/* Image-left: visually swap text and image */
+.sectionFlipped > *:first-child {
+  order: 2;
+}
+
+.sectionFlipped > *:last-child {
+  order: 1;
+}
+
+.sectionText {
+  padding: 0.5rem 0;
+}
+
+.sectionHeading {
+  font-family: "Instrument Serif", serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-style: italic;
+  margin: 0 0 0.85rem;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.sectionBody {
+  font-size: 0.9rem;
+  line-height: 1.85;
+  color: #444;
+  font-weight: 300;
   margin: 0;
 }
 
-/* Gallery — the main focus of the page */
-.gallery {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-bottom: 4rem;
-}
-
-.galleryImage {
+.sectionImage {
   width: 100%;
   height: auto;
   display: block;
 }
 
-/* Prev / Next nav */
+/* Gallery fallback (projects without sections) */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.galleryImage {
+  max-width: 680px;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Prev / Next */
 .projectNav {
   display: flex;
   justify-content: space-between;
@@ -171,7 +229,26 @@
     padding: 6rem 1.5rem 4rem;
   }
 
+  .heroImage {
+    max-width: 300px;
+  }
+
   .infoRow {
     gap: 2rem;
+  }
+
+  .sections {
+    gap: 4rem;
+  }
+
+  .section {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  /* Remove visual reordering on mobile — natural stack: text → image */
+  .sectionFlipped > *:first-child,
+  .sectionFlipped > *:last-child {
+    order: unset;
   }
 }

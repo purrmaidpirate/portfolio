@@ -14,6 +14,13 @@ export type ProjectImage = {
   alt: string;
 };
 
+export type ProjectSection = {
+  heading?: string;
+  body: string;
+  image?: ProjectImage;
+  imagePosition?: "left" | "right";
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -26,5 +33,6 @@ export type Project = {
   role: string;
   thumbnail: ProjectImage;
   images: ProjectImage[];
+  sections?: ProjectSection[];
   featured: boolean;
 };
