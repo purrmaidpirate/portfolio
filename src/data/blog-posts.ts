@@ -22,7 +22,7 @@ export const blogPosts: BlogPost[] = [
   { id: "30aa0a66-5b03-80a9-982c-c80feec38c26", slug: "progdata-week-4", title: "Week 4", course: "Programming for Data", semester: "Spring 2026", date: "2026-02-17", notionUrl: "https://www.notion.so/30aa0a665b0380a9982cc80feec38c26" },
 
   // Fall 2025 — Projection Mapping
-  { id: "26aa0a66-5b03-8011-9207-f51b5ca23a80", slug: "pm-week-1", title: "Week 1", course: "Projection Mapping", semester: "Fall 2025", date: "2025-09-10", notionUrl: "https://www.notion.so/26aa0a665b03801192075f1b5ca23a80" },
+  { id: "26aa0a66-5b03-8011-9207-f51b5ca23a80", slug: "pm-week-1", title: "Week 1", course: "Projection Mapping", semester: "Fall 2025", date: "2025-09-10", notionUrl: "https://www.notion.so/26aa0a665b0380119207f51b5ca23a80" },
   { id: "270a0a66-5b03-8046-89c8-d70689896215", slug: "pm-week-2", title: "Week 2", course: "Projection Mapping", semester: "Fall 2025", date: "2025-09-16", notionUrl: "https://www.notion.so/270a0a665b03804689c8d70689896215" },
   { id: "277a0a66-5b03-808f-a368-d5b1037b6be3", slug: "pm-week-3", title: "Week 3", course: "Projection Mapping", semester: "Fall 2025", date: "2025-09-23", notionUrl: "https://www.notion.so/277a0a665b03808fa368d5b1037b6be3" },
   { id: "27ea0a66-5b03-8070-be6f-eeb10b6014b7", slug: "pm-week-4", title: "Week 4", course: "Projection Mapping", semester: "Fall 2025", date: "2025-09-30", notionUrl: "https://www.notion.so/27ea0a665b038070be6feeb10b6014b7" },
@@ -32,22 +32,22 @@ export const blogPosts: BlogPost[] = [
 
   // Fall 2025 — Game Modifications
   { id: "26ba0a66-5b03-805d-8d96-ea1093c0c391", slug: "game-week-1", title: "Week 1: Chess Mod", course: "Game Modifications", semester: "Fall 2025", date: "2025-09-11", notionUrl: "https://www.notion.so/26ba0a665b03805d8d96ea1093c0c391" },
-  { id: "26ba0a66-5b03-8002-8dfe-f1020630fb33", slug: "game-week-2", title: "Week 2", course: "Game Modifications", semester: "Fall 2025", date: "2025-09-11", notionUrl: "https://www.notion.so/26ba0a665b0380028dfef1020630fb33" },
+  { id: "26ba0a66-5b03-8002-8dfe-f1020630fb33", slug: "game-week-2", title: "Week 2:", course: "Game Modifications", semester: "Fall 2025", date: "2025-09-11", notionUrl: "https://www.notion.so/26ba0a665b0380028dfef1020630fb33" },
   { id: "278a0a66-5b03-8073-aef3-ea684e0377d2", slug: "game-week-3", title: "Week 3", course: "Game Modifications", semester: "Fall 2025", date: "2025-09-24", notionUrl: "https://www.notion.so/278a0a665b038073aef3ea684e0377d2" },
   { id: "28fa0a66-5b03-8081-8c18-c4fe20f70c6e", slug: "game-go-fish", title: "Go Fish Mod", course: "Game Modifications", semester: "Fall 2025", date: "2025-10-17", notionUrl: "https://www.notion.so/28fa0a665b0380818c18c4fe20f70c6e" },
 
   // Fall 2025 — ITP Thesis
-  { id: "277a0a66-5b03-80e5-91cd-d07e5a9db2a7", slug: "thesis-update-1", title: "Progress Update 1", course: "ITP Thesis", semester: "Fall 2025", date: "2025-09-23", notionUrl: "https://www.notion.so/277a0a665b0380e591cdd07e5a9db2a7" },
-  { id: "284a0a66-5b03-80f0-bc8a-c2eac6c0016b", slug: "thesis-update-2", title: "Progress Update 2", course: "ITP Thesis", semester: "Fall 2025", date: "2025-10-06", notionUrl: "https://www.notion.so/284a0a665b0380f0bc8ac2eac6c0016b" },
-  { id: "2aca0a66-5b03-80b1-ab39-f14b061d16f2", slug: "thesis-update-5", title: "Progress Update 5", course: "ITP Thesis", semester: "Fall 2025", date: "2025-11-15", notionUrl: "https://www.notion.so/2aca0a665b0380b1ab39f14b061d16f2" },
-  { id: "312a0a66-5b03-8016-923d-d867c01aa56e", slug: "thesis-user-testing", title: "User Testing", course: "ITP Thesis", semester: "Fall 2025", date: "2026-02-25", notionUrl: "https://www.notion.so/312a0a665b038016923dd867c01aa56e" },
+  { id: "277a0a66-5b03-80e5-91cd-d07e5a9db2a7", slug: "thesis-update-1", title: "Progress Update 1 [09/21]", course: "ITP Thesis", semester: "Fall 2025", date: "2025-09-23", notionUrl: "https://www.notion.so/277a0a665b0380e591cdd07e5a9db2a7" },
+  { id: "284a0a66-5b03-80f0-bc8a-c2eac6c0016b", slug: "thesis-update-2", title: "Progress Update 2 [10/05]", course: "ITP Thesis", semester: "Fall 2025", date: "2025-10-06", notionUrl: "https://www.notion.so/284a0a665b0380f0bc8ac2eac6c0016b" },
+  { id: "2aca0a66-5b03-80b1-ab39-f14b061d16f2", slug: "thesis-update-5", title: "Progress Update 5 [11/16]", course: "ITP Thesis", semester: "Fall 2025", date: "2025-11-15", notionUrl: "https://www.notion.so/2aca0a665b0380b1ab39f14b061d16f2" },
+  { id: "312a0a66-5b03-8016-923d-d867c01aa56e", slug: "thesis-user-testing", title: "user testing", course: "ITP Thesis", semester: "Fall 2025", date: "2026-02-25", notionUrl: "https://www.notion.so/312a0a665b038016923dd867c01aa56e" },
 
   // Spring 2025 — Modalities of AR
-  { id: "18fa0a66-5b03-802a-9ad5-ffe745b75c77", slug: "ar-week-1", title: "Week 1: LoFi AR", course: "Modalities of AR", semester: "Spring 2025", date: "2025-02-03", notionUrl: "https://www.notion.so/18fa0a665b03802a9ad5ffe745b75c77" },
-  { id: "19ea0a66-5b03-80c6-947b-d58bfca3890a", slug: "ar-week-3", title: "Week 3: Image", course: "Modalities of AR", semester: "Spring 2025", date: "2025-02-18", notionUrl: "https://www.notion.so/19ea0a665b0380c6947bd58bfca3890a" },
+  { id: "18fa0a66-5b03-802a-9ad5-ffe745b75c77", slug: "ar-week-1", title: "Week 1-LoFi AR", course: "Modalities of AR", semester: "Spring 2025", date: "2025-02-03", notionUrl: "https://www.notion.so/18fa0a665b03802a9ad5ffe745b75c77" },
+  { id: "19ea0a66-5b03-80c6-947b-d58bfca3890a", slug: "ar-week-3", title: "Week 3-Image", course: "Modalities of AR", semester: "Spring 2025", date: "2025-02-18", notionUrl: "https://www.notion.so/19ea0a665b0380c6947bd58bfca3890a" },
   { id: "1a4a0a66-5b03-8023-b26e-e3c66e722580", slug: "ar-week-4", title: "Week 4: Body", course: "Modalities of AR", semester: "Spring 2025", date: "2025-02-24", notionUrl: "https://www.notion.so/1a4a0a665b038023b26ee3c66e722580" },
   { id: "1aba0a66-5b03-80b3-95ac-c499268b218e", slug: "ar-week-5", title: "Week 5: Environment", course: "Modalities of AR", semester: "Spring 2025", date: "2025-03-03", notionUrl: "https://www.notion.so/1aba0a665b0380b395acc499268b218e" },
-  { id: "1b2a0a66-5b03-807c-bf27-f77569641010", slug: "ar-week-7", title: "Week 7: Final Project", course: "Modalities of AR", semester: "Spring 2025", date: "2025-03-10", notionUrl: "https://www.notion.so/1b2a0a665b03807cbf27f77569641010" },
+  { id: "1b2a0a66-5b03-807c-bf27-f77569641010", slug: "ar-week-7", title: "Week 7 : Final Project", course: "Modalities of AR", semester: "Spring 2025", date: "2025-03-10", notionUrl: "https://www.notion.so/1b2a0a665b03807cbf27f77569641010" },
 
   // Spring 2025 — Code Your Way
   { id: "188a0a66-5b03-80e3-afef-eadc8798b525", slug: "cyw-week-1", title: "Week 1", course: "Code Your Way", semester: "Spring 2025", date: "2025-01-27", notionUrl: "https://www.notion.so/188a0a665b0380e3afefeadc8798b525" },
