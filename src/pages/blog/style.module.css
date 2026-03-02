@@ -35,15 +35,55 @@
 
 /* Course grouping */
 .courseGroup {
+  margin-bottom: 0.25rem;
+}
+
+.courseGroup[open] {
   margin-bottom: 1.5rem;
+}
+
+.courseGroup summary {
+  list-style: none;
+}
+
+.courseGroup summary::-webkit-details-marker {
+  display: none;
+}
+
+.courseSummary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 0.4rem 0;
+  user-select: none;
+}
+
+.courseSummary:hover .courseHeading {
+  opacity: 0.5;
 }
 
 .courseHeading {
   font-size: 0.75rem;
   font-weight: 500;
   color: #555;
-  margin: 0 0 0.1rem;
+  margin: 0;
   letter-spacing: 0.01em;
+  transition: opacity 0.15s;
+}
+
+.toggleIcon {
+  width: 8px;
+  height: 8px;
+  border-right: 1px solid #bbb;
+  border-bottom: 1px solid #bbb;
+  transform: rotate(-45deg);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.courseGroup[open] .toggleIcon {
+  transform: rotate(45deg);
 }
 
 .posts {

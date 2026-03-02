@@ -51,14 +51,17 @@ export function BlogPage() {
                   .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
                 return (
-                  <div key={course} className={styles.courseGroup}>
-                    <h3 className={styles.courseHeading}>{course}</h3>
+                  <details key={course} className={styles.courseGroup}>
+                    <summary className={styles.courseSummary}>
+                      <span className={styles.courseHeading}>{course}</span>
+                      <span className={styles.toggleIcon} aria-hidden="true" />
+                    </summary>
                     <div className={styles.posts}>
                       {coursePosts.map((post) => (
                         <PostRow key={post.id} post={post} />
                       ))}
                     </div>
-                  </div>
+                  </details>
                 );
               })}
             </section>
