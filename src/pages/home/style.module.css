@@ -24,7 +24,7 @@
 }
 
 .role {
-  font-family: "Inter", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: clamp(0.65rem, 1.1vw, 0.85rem);
   text-transform: uppercase;
   letter-spacing: 0.25em;
@@ -49,7 +49,7 @@
   pointer-events: none;
   mix-blend-mode: difference;
   color: #fff;
-  font-family: "Inter", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   text-transform: uppercase;

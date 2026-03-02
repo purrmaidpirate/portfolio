@@ -2,7 +2,7 @@
   max-width: 1100px;
   margin: 0 auto;
   padding: 7rem 2.5rem 6rem;
-  font-family: "Inter", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   color: #111;
 }
 
@@ -30,7 +30,7 @@
   border: none;
   border-radius: 0;
   padding: 0;
-  font-family: "Inter", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 0.72rem;
   font-weight: 400;
   cursor: pointer;
@@ -82,7 +82,7 @@
 }
 
 .cardNumber {
-  font-family: "Inter", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 0.6rem;
   font-weight: 400;
   color: #ccc;
