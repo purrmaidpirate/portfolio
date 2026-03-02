@@ -20,11 +20,80 @@ import {
 } from "./constants";
 import { interactionState } from "./interaction-state";
 import styles from "./style.module.css";
-import { getTexture } from "./texture-manager";
 import type { ChunkData, InfiniteCanvasProps, MediaItem, PlaneData } from "./types";
 import { generateChunkPlanesCached, getChunkUpdateThrottleMs, shouldThrottleUpdate } from "./utils";
 
 const PLANE_GEOMETRY = new THREE.PlaneGeometry(1, 1);
+
+function createCardTexture(width: number, height: number, label?: string, icon?: string): THREE.CanvasTexture {
+  const res = 512;
+  const canvasH = Math.round(res * (height / width));
+  const canvas = document.createElement("canvas");
+  canvas.width = res;
+  canvas.height = canvasH;
+  const ctx = canvas.getContext("2d")!;
+
+  // White fill
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, res, canvasH);
+
+  // Black outline
+  const stroke = Math.max(4, Math.round(res * 0.018));
+  ctx.strokeStyle = "#000000";
+  ctx.lineWidth = stroke;
+  ctx.strokeRect(stroke / 2, stroke / 2, res - stroke, canvasH - stroke);
+
+  // Optional icon image (drawn centered)
+  if (icon) {
+    const img = new Image();
+    img.onload = () => {
+      const maxSize = res * 0.5;
+      const ratio = Math.min(maxSize / img.width, maxSize / img.height);
+      const iw = img.width * ratio;
+      const ih = img.height * ratio;
+      const ix = (res - iw) / 2;
+      const iy = (canvasH - ih) / 2 - (label ? canvasH * 0.06 : 0);
+      ctx.drawImage(img, ix, iy, iw, ih);
+      if (label) drawLabel(ctx, res, canvasH, label, canvasH * 0.38);
+      tex.needsUpdate = true;
+    };
+    img.src = icon;
+  }
+
+  // Optional text label (centered)
+  if (label && !icon) {
+    drawLabel(ctx, res, canvasH, label, canvasH / 2);
+  }
+
+  const tex = new THREE.CanvasTexture(canvas);
+  return tex;
+}
+
+function drawLabel(ctx: CanvasRenderingContext2D, w: number, _h: number, text: string, y: number) {
+  const fontSize = Math.round(w * 0.055);
+  ctx.fillStyle = "#111111";
+  ctx.font = `400 ${fontSize}px "Space Grotesk", sans-serif`;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  // wrap long text
+  const maxWidth = w * 0.78;
+  const words = text.split(" ");
+  const lines: string[] = [];
+  let line = "";
+  for (const word of words) {
+    const test = line ? `${line} ${word}` : word;
+    if (ctx.measureText(test).width > maxWidth && line) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = test;
+    }
+  }
+  lines.push(line);
+  const lineH = fontSize * 1.4;
+  const startY = y - ((lines.length - 1) * lineH) / 2;
+  lines.forEach((l, i) => ctx.fillText(l, w / 2, startY + i * lineH));
+}
 
 const KEYBOARD_MAP = [
   { name: "forward", keys: ["w", "W", "ArrowUp"] },
@@ -83,10 +152,12 @@ function MediaPlane({
 }) {
   const meshRef = React.useRef<THREE.Mesh>(null);
   const materialRef = React.useRef<THREE.MeshBasicMaterial>(null);
-  const localState = React.useRef({ opacity: 0, frame: 0, ready: false });
+  const localState = React.useRef({ opacity: 0, frame: 0 });
 
-  const [texture, setTexture] = React.useState<THREE.Texture | null>(null);
-  const [isReady, setIsReady] = React.useState(false);
+  const texture = React.useMemo(
+    () => createCardTexture(media.width, media.height, media.label, media.icon),
+    [media.width, media.height, media.label, media.icon],
+  );
 
   useFrame(() => {
     const material = materialRef.current;
@@ -94,12 +165,6 @@ function MediaPlane({
     const state = localState.current;
 
     if (!material || !mesh) {
-      return;
-    }
-
-    state.frame = (state.frame + 1) & 1;
-
-    if (state.opacity < INVIS_THRESHOLD && !mesh.visible && state.frame === 0) {
       return;
     }
 
@@ -153,58 +218,10 @@ function MediaPlane({
     document.body.style.cursor = "grab";
   }, []);
 
-  // Calculate display scale from media dimensions (from manifest)
   const displayScale = React.useMemo(() => {
-    if (media.width && media.height) {
-      const aspect = media.width / media.height;
-      return new THREE.Vector3(scale.y * aspect, scale.y, 1);
-    }
-
-    return scale;
+    const aspect = media.width / media.height;
+    return new THREE.Vector3(scale.y * aspect, scale.y, 1);
   }, [media.width, media.height, scale]);
-
-  // Load texture with onLoad callback
-  React.useEffect(() => {
-    const state = localState.current;
-    state.ready = false;
-    state.opacity = 0;
-    setIsReady(false);
-
-    const material = materialRef.current;
-
-    if (material) {
-      material.opacity = 0;
-      material.depthWrite = false;
-      material.map = null;
-    }
-
-    const tex = getTexture(media, () => {
-      state.ready = true;
-      setIsReady(true);
-    });
-
-    setTexture(tex);
-  }, [media]);
-
-  // Apply texture when ready
-  React.useEffect(() => {
-    const material = materialRef.current;
-    const mesh = meshRef.current;
-    const state = localState.current;
-
-    if (!material || !mesh || !texture || !isReady || !state.ready) {
-      return;
-    }
-
-    material.map = texture;
-    material.opacity = state.opacity;
-    material.depthWrite = state.opacity >= 1;
-    mesh.scale.copy(displayScale);
-  }, [displayScale, texture, isReady]);
-
-  if (!texture || !isReady) {
-    return null;
-  }
 
   return (
     <mesh
@@ -217,7 +234,7 @@ function MediaPlane({
       onPointerOver={handlePointerOver}
       onPointerOut={handlePointerOut}
     >
-      <meshBasicMaterial ref={materialRef} transparent opacity={0} side={THREE.DoubleSide} />
+      <meshBasicMaterial ref={materialRef} map={texture} transparent opacity={0} side={THREE.DoubleSide} />
     </mesh>
   );
 }

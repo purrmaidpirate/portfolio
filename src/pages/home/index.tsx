@@ -6,24 +6,17 @@ import type { MediaItem } from "~/src/infinite-canvas/types";
 import { PageLoader } from "~/src/loader";
 import styles from "./style.module.css";
 
-const media: MediaItem[] = projects.flatMap((p) => [
-  {
-    url: p.thumbnail.url,
-    width: p.thumbnail.width,
-    height: p.thumbnail.height,
-    slug: p.slug,
-  },
-  ...p.images.map((img) => ({
-    url: img.url,
-    width: img.width,
-    height: img.height,
-    slug: p.slug,
-  })),
-]);
+const media: MediaItem[] = projects.map((p) => ({
+  width: p.thumbnail.width,
+  height: p.thumbnail.height,
+  slug: p.slug,
+  // label: p.title,  // uncomment to show project title inside the card
+  // icon: p.thumbnail.url,  // uncomment to show thumbnail image inside the card
+}));
 
 export function HomePage() {
   const navigate = useNavigate();
-  const [textureProgress, setTextureProgress] = React.useState(0);
+  const [textureProgress, setTextureProgress] = React.useState(100);
 
   const handlePlaneClick = React.useCallback(
     (slug: string) => {
