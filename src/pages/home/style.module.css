@@ -12,12 +12,12 @@
 }
 
 .name {
-  font-family: "Instrument Serif", serif;
+  font-family: "Jacquard 12", serif;
   font-size: clamp(2rem, 5.5vw, 4.5rem);
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
   margin: 0;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
   line-height: 1.1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

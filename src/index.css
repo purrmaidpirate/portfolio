@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Jacquard 12";
+  src: url("/fonts/Jacquard12-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   font-size: 16px;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
