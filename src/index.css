@@ -32,6 +32,7 @@
 *::after,
 *::before {
   box-sizing: border-box;
+  cursor: url("/cursor.png") 0 0, auto !important;
 }
 
 body {
