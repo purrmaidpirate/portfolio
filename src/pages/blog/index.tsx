@@ -1,5 +1,5 @@
 import { PageTransition } from "~/src/components/page-transition";
-import { SEMESTERS, sortedBlogPosts } from "~/src/data/blog-posts";
+import { SEMESTERS, blogPosts } from "~/src/data/blog-posts";
 import type { BlogPost } from "~/src/data/blog-posts";
 import styles from "./style.module.css";
 
@@ -11,18 +11,22 @@ function PostRow({ post }: { post: BlogPost }) {
       rel="noopener noreferrer"
       className={styles.postRow}
     >
-      <span className={styles.postLeft}>
-        <span className={styles.postTitle}>{post.title}</span>
-        <span className={styles.courseTag}>{post.course}</span>
-      </span>
+      <span className={styles.postTitle}>{post.title}</span>
       <time className={styles.postDate}>
         {new Date(post.date).toLocaleDateString("en-US", {
-          year: "numeric",
           month: "short",
+          day: "numeric",
         })}
       </time>
     </a>
   );
+}
+
+function getCourses(posts: BlogPost[]): string[] {
+  const seen = new Set<string>();
+  return posts
+    .filter((p) => !seen.has(p.course) && seen.add(p.course))
+    .map((p) => p.course);
 }
 
 export function BlogPage() {
@@ -32,17 +36,31 @@ export function BlogPage() {
         <h1 className={styles.heading}>Blog</h1>
 
         {SEMESTERS.map((semester) => {
-          const posts = sortedBlogPosts.filter((p) => p.semester === semester);
-          if (posts.length === 0) return null;
+          const semesterPosts = blogPosts.filter((p) => p.semester === semester);
+          if (semesterPosts.length === 0) return null;
+
+          const courses = getCourses(semesterPosts);
 
           return (
             <section key={semester} className={styles.semesterSection}>
               <h2 className={styles.semesterHeading}>{semester}</h2>
-              <div className={styles.posts}>
-                {posts.map((post) => (
-                  <PostRow key={post.id} post={post} />
-                ))}
-              </div>
+
+              {courses.map((course) => {
+                const coursePosts = semesterPosts
+                  .filter((p) => p.course === course)
+                  .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+                return (
+                  <div key={course} className={styles.courseGroup}>
+                    <h3 className={styles.courseHeading}>{course}</h3>
+                    <div className={styles.posts}>
+                      {coursePosts.map((post) => (
+                        <PostRow key={post.id} post={post} />
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
             </section>
           );
         })}

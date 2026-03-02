@@ -19,7 +19,7 @@
 
 /* Semester grouping */
 .semesterSection {
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
 }
 
 .semesterHeading {
@@ -28,63 +28,57 @@
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: #aaa;
-  margin: 0 0 0.5rem;
+  margin: 0 0 1.25rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid #eee;
+}
+
+/* Course grouping */
+.courseGroup {
+  margin-bottom: 1.5rem;
+}
+
+.courseHeading {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #555;
+  margin: 0 0 0.1rem;
+  letter-spacing: 0.01em;
 }
 
 .posts {
   display: flex;
   flex-direction: column;
   gap: 0;
+  padding-left: 0.85rem;
+  border-left: 1px solid #eee;
 }
 
-/* Post rows — title + course tag left, date right */
+/* Post rows */
 .postRow {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 0.65rem 0;
+  padding: 0.4rem 0;
   text-decoration: none;
   color: inherit;
   transition: opacity 0.15s;
 }
 
 .postRow:hover {
-  opacity: 0.5;
-}
-
-.postLeft {
-  display: flex;
-  align-items: baseline;
-  gap: 0.65rem;
-  min-width: 0;
-  overflow: hidden;
+  opacity: 0.4;
 }
 
 .postTitle {
   font-family: "Instrument Serif", serif;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 400;
   margin: 0;
   line-height: 1.3;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.courseTag {
-  font-size: 0.6rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: #999;
-  white-space: nowrap;
-  flex-shrink: 0;
 }
 
 .postDate {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 400;
   color: #bbb;
   text-transform: uppercase;
