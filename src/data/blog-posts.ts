@@ -67,10 +67,42 @@ export const blogPosts: BlogPost[] = [
   { id: "1bba0a66-5b03-80b1-abc5-e3577ee72f8e", slug: "leds-week-2", title: "Week 2", course: "Big LEDs", semester: "Spring 2025", date: "2025-03-19", notionUrl: "https://www.notion.so/1bba0a665b0380b1abc5e3577ee72f8e" },
   { id: "1c9a0a66-5b03-8082-9dc5-dc9d938be342", slug: "leds-week-3", title: "Week 3", course: "Big LEDs", semester: "Spring 2025", date: "2025-04-02", notionUrl: "https://www.notion.so/1c9a0a665b0380829dc5dc9d938be342" },
   { id: "1f6a0a66-5b03-806f-968a-f6c662dfd652", slug: "leds-final", title: "Final", course: "Big LEDs", semester: "Spring 2025", date: "2025-05-17", notionUrl: "https://www.notion.so/1f6a0a665b03806f968af6c662dfd652" },
+
+  // Fall 2024 — Physical Computing
+  { id: "34991591-4118-4217-b53b-d2cfbe5241bd", slug: "pcomp-week-1", title: "Week 1", course: "Physical Computing", semester: "Fall 2024", date: "2024-09-08", notionUrl: "https://www.notion.so/3499159141184217b53bd2cfbe5241bd" },
+  { id: "41dbf818-58e4-4455-ad5b-a2f484e120e5", slug: "pcomp-week-2", title: "Week 2", course: "Physical Computing", semester: "Fall 2024", date: "2024-09-16", notionUrl: "https://www.notion.so/41dbf81858e44455ad5ba2f484e120e5" },
+  { id: "10aa0a66-5b03-8067-b6ff-e2c05319f482", slug: "pcomp-week-3", title: "Week 3", course: "Physical Computing", semester: "Fall 2024", date: "2024-09-23", notionUrl: "https://www.notion.so/10aa0a665b038067b6ffe2c05319f482" },
+  { id: "119a0a66-5b03-80f2-af75-ed03acd68ea7", slug: "pcomp-week-5", title: "Week 5", course: "Physical Computing", semester: "Fall 2024", date: "2024-10-08", notionUrl: "https://www.notion.so/119a0a665b0380f2af75ed03acd68ea7" },
+  { id: "127a0a66-5b03-80ca-9ab8-fcbfe638c469", slug: "pcomp-week-7", title: "Week 7 -Midterm project: Magic Crystal Ball", course: "Physical Computing", semester: "Fall 2024", date: "2024-10-22", notionUrl: "https://www.notion.so/127a0a665b0380ca9ab8fcbfe638c469" },
+  { id: "135a0a66-5b03-8062-bc05-d62a9e498895", slug: "pcomp-week-8", title: "Week 8", course: "Physical Computing", semester: "Fall 2024", date: "2024-11-05", notionUrl: "https://www.notion.so/135a0a665b038062bc05d62a9e498895" },
+  { id: "135a0a66-5b03-80ac-8649-f86ef9b9e265", slug: "pcomp-week-9", title: "Week 9", course: "Physical Computing", semester: "Fall 2024", date: "2024-11-05", notionUrl: "https://www.notion.so/135a0a665b0380ac8649f86ef9b9e265" },
+  { id: "161a0a66-5b03-8083-8975-e0519f842367", slug: "pcomp-week-14", title: "Week 14 - Final Project", course: "Physical Computing", semester: "Fall 2024", date: "2024-12-19", notionUrl: "https://www.notion.so/161a0a665b0380838975e0519f842367" },
+
+  // Fall 2024 — Hypercinema
+  { id: "6f63b25d-82d2-487b-a92a-4ff14991a12e", slug: "hyper-week-1", title: "Week 1", course: "Hypercinema", semester: "Fall 2024", date: "2024-09-13", notionUrl: "https://www.notion.so/6f63b25d82d2487ba92a4ff14991a12e" },
+  { id: "10aa0a66-5b03-809f-8e71-e159589dc63e", slug: "hyper-week-2", title: "Week 2", course: "Hypercinema", semester: "Fall 2024", date: "2024-09-23", notionUrl: "https://www.notion.so/10aa0a665b03809f8e71e159589dc63e" },
+  { id: "110a0a66-5b03-8035-baaa-d63fd52938e3", slug: "hyper-week-3", title: "Week 3", course: "Hypercinema", semester: "Fall 2024", date: "2024-09-29", notionUrl: "https://www.notion.so/110a0a665b038035baaad63fd52938e3" },
+  { id: "134a0a66-5b03-80f1-9aa4-df486042d2ba", slug: "hyper-week-7-8", title: "Week 7-8", course: "Hypercinema", semester: "Fall 2024", date: "2024-11-04", notionUrl: "https://www.notion.so/134a0a665b0380f19aa4df486042d2ba" },
+  { id: "157a0a66-5b03-8006-b8b3-ddd2dcd56dd9", slug: "hyper-week-9", title: "Week 9: Synthetic Media Project", course: "Hypercinema", semester: "Fall 2024", date: "2024-12-09", notionUrl: "https://www.notion.so/157a0a665b038006b8b3ddd2dcd56dd9" },
+  { id: "157a0a66-5b03-80df-8690-d64c74eb1309", slug: "hyper-finals", title: "Finals: Cornell Box", course: "Hypercinema", semester: "Fall 2024", date: "2024-12-09", notionUrl: "https://www.notion.so/157a0a665b0380df8690d64c74eb1309" },
+
+  // Fall 2024 — Applications
+  { id: "2dfa0a66-5b03-8060-b9fa-e11204d9bb30", slug: "apps-class-1", title: "Class 1", course: "Applications", semester: "Fall 2024", date: "2024-09-05", notionUrl: "https://www.notion.so/2dfa0a665b038060b9fae11204d9bb30" },
+  { id: "2dfa0a66-5b03-8091-b9f2-f59a24bf30b4", slug: "apps-week-3", title: "Week 3", course: "Applications", semester: "Fall 2024", date: "2024-09-19", notionUrl: "https://www.notion.so/2dfa0a665b038091b9f2f59a24bf30b4" },
+
+  // Fall 2024 — Visual Language
+  { id: "2dfa0a66-5b03-8081-9b74-d24fb13438a6", slug: "vl-class-1", title: "Class 1", course: "Visual Language", semester: "Fall 2024", date: "2024-09-05", notionUrl: "https://www.notion.so/2dfa0a665b0380819b74d24fb13438a6" },
+  { id: "2dfa0a66-5b03-80cf-bb4e-ecc4eae67d46", slug: "vl-class-2", title: "Class 2", course: "Visual Language", semester: "Fall 2024", date: "2024-09-12", notionUrl: "https://www.notion.so/2dfa0a665b0380cfbb4eecc4eae67d46" },
+  { id: "2dfa0a66-5b03-80ed-822e-c74917ff44ec", slug: "vl-class-3", title: "Class 3", course: "Visual Language", semester: "Fall 2024", date: "2024-09-19", notionUrl: "https://www.notion.so/2dfa0a665b0380ed822ec74917ff44ec" },
+  { id: "2dfa0a66-5b03-8088-9897-e9ec958836d9", slug: "vl-class-4", title: "Class 4", course: "Visual Language", semester: "Fall 2024", date: "2024-09-26", notionUrl: "https://www.notion.so/2dfa0a665b03808898970e9ec958836d9" },
+  { id: "2dfa0a66-5b03-8028-935e-f4e21052a7a8", slug: "vl-class-5", title: "Class 5", course: "Visual Language", semester: "Fall 2024", date: "2024-10-03", notionUrl: "https://www.notion.so/2dfa0a665b038028935ef4e21052a7a8" },
+  { id: "2dfa0a66-5b03-803f-996d-f38ca554d019", slug: "vl-class-6", title: "Class 6", course: "Visual Language", semester: "Fall 2024", date: "2024-10-10", notionUrl: "https://www.notion.so/2dfa0a665b03803f996df38ca554d019" },
+  { id: "2dfa0a66-5b03-8060-9de2-e33e3957b369", slug: "vl-class-7", title: "Class 7", course: "Visual Language", semester: "Fall 2024", date: "2024-10-17", notionUrl: "https://www.notion.so/2dfa0a665b0380609de2e33e3957b369" },
+  { id: "2dfa0a66-5b03-8008-9a91-c8428e12110e", slug: "vl-final", title: "Final", course: "Visual Language", semester: "Fall 2024", date: "2024-12-10", notionUrl: "https://www.notion.so/2dfa0a665b0380089a91c8428e12110e" },
 ];
 
 export const sortedBlogPosts = [...blogPosts].sort(
   (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
 );
 
-export const SEMESTERS = ["Spring 2026", "Fall 2025", "Spring 2025"] as const;
+export const SEMESTERS = ["Spring 2026", "Fall 2025", "Spring 2025", "Fall 2024"] as const;
