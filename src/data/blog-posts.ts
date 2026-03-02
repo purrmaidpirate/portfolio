@@ -42,6 +42,23 @@ export const blogPosts: BlogPost[] = [
   { id: "2aca0a66-5b03-80b1-ab39-f14b061d16f2", slug: "thesis-update-5", title: "Progress Update 5 [11/16]", course: "ITP Thesis", semester: "Fall 2025", date: "2025-11-15", notionUrl: "https://www.notion.so/2aca0a665b0380b1ab39f14b061d16f2" },
   { id: "312a0a66-5b03-8016-923d-d867c01aa56e", slug: "thesis-user-testing", title: "user testing", course: "ITP Thesis", semester: "Fall 2025", date: "2026-02-25", notionUrl: "https://www.notion.so/312a0a665b038016923dd867c01aa56e" },
 
+  // Fall 2025 — Fabricating Mechanical Automatons
+  { id: "26ba0a66-5b03-8091-b67e-da1d0309ce2e", slug: "fab-week-1", title: "Week 1", course: "Fabricating Mechanical Automatons", semester: "Fall 2025", date: "2025-09-11", notionUrl: "https://www.notion.so/26ba0a665b038091b67eda1d0309ce2e" },
+  { id: "272a0a66-5b03-808c-9dfa-f4fddd6339a2", slug: "fab-week-2", title: "Week 2", course: "Fabricating Mechanical Automatons", semester: "Fall 2025", date: "2025-09-18", notionUrl: "https://www.notion.so/272a0a665b03808c9dfaf4fddd6339a2" },
+  { id: "279a0a66-5b03-8062-b434-ec69eed93aae", slug: "fab-week-3", title: "Week 3", course: "Fabricating Mechanical Automatons", semester: "Fall 2025", date: "2025-09-25", notionUrl: "https://www.notion.so/279a0a665b038062b434ec69eed93aae" },
+  { id: "284a0a66-5b03-8061-a8b5-f3eac3e4ef01", slug: "fab-week-5", title: "Week 5", course: "Fabricating Mechanical Automatons", semester: "Fall 2025", date: "2025-10-06", notionUrl: "https://www.notion.so/284a0a665b038061a8b5f3eac3e4ef01" },
+  { id: "28ea0a66-5b03-8047-a3c2-da5b87687e52", slug: "fab-midterm", title: "Midterm- Navagunjara", course: "Fabricating Mechanical Automatons", semester: "Fall 2025", date: "2025-10-16", notionUrl: "https://www.notion.so/28ea0a665b038047a3c2da5b87687e52" },
+  { id: "29ca0a66-5b03-8026-babc-f35270d121ef", slug: "fab-week-7", title: "Week 7: Final Proposal", course: "Fabricating Mechanical Automatons", semester: "Fall 2025", date: "2025-10-30", notionUrl: "https://www.notion.so/29ca0a665b038026babcf35270d121ef" },
+  { id: "2a3a0a66-5b03-8026-9c52-f04053231535", slug: "fab-week-9", title: "Week 9", course: "Fabricating Mechanical Automatons", semester: "Fall 2025", date: "2025-11-06", notionUrl: "https://www.notion.so/2a3a0a665b0380269c52f04053231535" },
+  { id: "2aaa0a66-5b03-80a0-9a59-c088fdbf17dd", slug: "fab-week-10", title: "Week 10", course: "Fabricating Mechanical Automatons", semester: "Fall 2025", date: "2025-11-13", notionUrl: "https://www.notion.so/2aaa0a665b0380a09a59c088fdbf17dd" },
+  { id: "2aba0a66-5b03-80f0-aba3-ddf299a97136", slug: "fab-final", title: "Final", course: "Fabricating Mechanical Automatons", semester: "Fall 2025", date: "2025-11-14", notionUrl: "https://www.notion.so/2aba0a665b0380f0aba3ddf299a97136" },
+
+  // Fall 2025 — Production Studio Seminar
+  { id: "26aa0a66-5b03-8053-896a-f487df5b5bcb", slug: "pss-week-1", title: "Week 1 - Podcast", course: "Production Studio Seminar", semester: "Fall 2025", date: "2025-09-10", notionUrl: "https://www.notion.so/26aa0a665b038053896af487df5b5bcb" },
+  { id: "271a0a66-5b03-80a7-98ee-d737834bd7ea", slug: "pss-week-2", title: "Week 2", course: "Production Studio Seminar", semester: "Fall 2025", date: "2025-09-17", notionUrl: "https://www.notion.so/271a0a665b0380a798eed737834bd7ea" },
+  { id: "278a0a66-5b03-8056-adf1-f50807b68a26", slug: "pss-week-3", title: "Week 3", course: "Production Studio Seminar", semester: "Fall 2025", date: "2025-09-24", notionUrl: "https://www.notion.so/278a0a665b038056adf1f50807b68a26" },
+  { id: "2a9a0a66-5b03-80c8-a843-dec099958df5", slug: "pss-final", title: "Final Project: Oopsitopia", course: "Production Studio Seminar", semester: "Fall 2025", date: "2025-11-12", notionUrl: "https://www.notion.so/2a9a0a665b0380c8a843dec099958df5" },
+
   // Spring 2025 — Modalities of AR
   { id: "18fa0a66-5b03-802a-9ad5-ffe745b75c77", slug: "ar-week-1", title: "Week 1-LoFi AR", course: "Modalities of AR", semester: "Spring 2025", date: "2025-02-03", notionUrl: "https://www.notion.so/18fa0a665b03802a9ad5ffe745b75c77" },
   { id: "19ea0a66-5b03-80c6-947b-d58bfca3890a", slug: "ar-week-3", title: "Week 3-Image", course: "Modalities of AR", semester: "Spring 2025", date: "2025-02-18", notionUrl: "https://www.notion.so/19ea0a665b0380c6947bd58bfca3890a" },
@@ -61,6 +78,27 @@ export const blogPosts: BlogPost[] = [
   { id: "1d5a0a66-5b03-80df-a20e-e76336c762db", slug: "cyw-week-10", title: "Week 10", course: "Code Your Way", semester: "Spring 2025", date: "2025-04-14", notionUrl: "https://www.notion.so/1d5a0a665b0380dfa20ee76336c762db" },
   { id: "1dba0a66-5b03-807a-ab9e-c26ddc48dc7c", slug: "cyw-week-11", title: "Week 11", course: "Code Your Way", semester: "Spring 2025", date: "2025-04-20", notionUrl: "https://www.notion.so/1dba0a665b03807aab9ec26ddc48dc7c" },
   { id: "1eaa0a66-5b03-808e-a34a-e35aede0a904", slug: "cyw-week-13", title: "Week 13: Final", course: "Code Your Way", semester: "Spring 2025", date: "2025-05-05", notionUrl: "https://www.notion.so/1eaa0a665b03808ea34ae35aede0a904" },
+
+  // Spring 2025 — Biophilic Experiences
+  { id: "185a0a66-5b03-80c8-80ed-ffa23d4e609f", slug: "bio-assignment-1", title: "Assignment 1", course: "Biophilic Experiences", semester: "Spring 2025", date: "2025-01-24", notionUrl: "https://www.notion.so/185a0a665b0380c880edffa23d4e609f" },
+  { id: "19ba0a66-5b03-807b-b44f-c23b887e9bd8", slug: "bio-assignment-2", title: "Assignment 2", course: "Biophilic Experiences", semester: "Spring 2025", date: "2025-02-15", notionUrl: "https://www.notion.so/19ba0a665b03807bb44fc23b887e9bd8" },
+  { id: "1a8a0a66-5b03-80ec-aeae-c9a7fd66d843", slug: "bio-assignment-3", title: "Assignment 3 - Final Project", course: "Biophilic Experiences", semester: "Spring 2025", date: "2025-02-28", notionUrl: "https://www.notion.so/1a8a0a665b0380ecaeaec9a7fd66d843" },
+
+  // Spring 2025 — Playful Communication of Serious Research
+  { id: "184a0a66-5b03-8010-9d1a-dedc01c287c7", slug: "pcsr-week-1", title: "Week 1", course: "Playful Communication of Serious Research", semester: "Spring 2025", date: "2025-01-23", notionUrl: "https://www.notion.so/184a0a665b0380109d1adedc01c287c7" },
+  { id: "18ba0a66-5b03-8018-8c63-ceb7e2b34444", slug: "pcsr-week-2", title: "Week 2", course: "Playful Communication of Serious Research", semester: "Spring 2025", date: "2025-01-30", notionUrl: "https://www.notion.so/18ba0a665b0380188c63ceb7e2b34444" },
+  { id: "192a0a66-5b03-8074-9a00-cdaa09cb8bc7", slug: "pcsr-week-3", title: "Week 3", course: "Playful Communication of Serious Research", semester: "Spring 2025", date: "2025-02-06", notionUrl: "https://www.notion.so/192a0a665b0380749a00cdaa09cb8bc7" },
+  { id: "199a0a66-5b03-8033-8399-c2b7edb5d8dd", slug: "pcsr-week-4", title: "Week 4", course: "Playful Communication of Serious Research", semester: "Spring 2025", date: "2025-02-13", notionUrl: "https://www.notion.so/199a0a665b0380338399c2b7edb5d8dd" },
+  { id: "1a0a0a66-5b03-8027-a4ed-cf24b45b7506", slug: "pcsr-week-5", title: "Week 5", course: "Playful Communication of Serious Research", semester: "Spring 2025", date: "2025-02-20", notionUrl: "https://www.notion.so/1a0a0a665b038027a4edcf24b45b7506" },
+  { id: "1a7a0a66-5b03-8030-a4ad-fbaf003ce6d6", slug: "pcsr-week-6", title: "Week 6", course: "Playful Communication of Serious Research", semester: "Spring 2025", date: "2025-02-27", notionUrl: "https://www.notion.so/1a7a0a665b038030a4adfbaf003ce6d6" },
+  { id: "1b5a0a66-5b03-80e8-822d-f3fe069baf05", slug: "pcsr-week-7", title: "Week7", course: "Playful Communication of Serious Research", semester: "Spring 2025", date: "2025-03-13", notionUrl: "https://www.notion.so/1b5a0a665b0380e8822df3fe069baf05" },
+  { id: "1bca0a66-5b03-80a3-8b9d-d0582cfd7456", slug: "pcsr-week-8", title: "Week 8", course: "Playful Communication of Serious Research", semester: "Spring 2025", date: "2025-03-20", notionUrl: "https://www.notion.so/1bca0a665b0380a38b9dd0582cfd7456" },
+  { id: "1c7a0a66-5b03-8072-b0fb-d5eb84e78188", slug: "pcsr-dashboard", title: "Playful Communication Dashboard", course: "Playful Communication of Serious Research", semester: "Spring 2025", date: "2025-03-31", notionUrl: "https://www.notion.so/1c7a0a665b038072b0fbd5eb84e78188" },
+  { id: "1d8a0a66-5b03-80f0-aa62-dc3e5c3436dd", slug: "pcsr-week-idk", title: "Week - idk", course: "Playful Communication of Serious Research", semester: "Spring 2025", date: "2025-04-17", notionUrl: "https://www.notion.so/1d8a0a665b0380f0aa62dc3e5c3436dd" },
+
+  // Spring 2025 — Synthetic Architectures
+  { id: "184a0a66-5b03-8045-8bd7-e7012c9110d3", slug: "synth-week-1", title: "Week 1", course: "Synthetic Architectures", semester: "Spring 2025", date: "2025-01-23", notionUrl: "https://www.notion.so/184a0a665b0380458bd7e7012c9110d3" },
+  { id: "2dfa0a66-5b03-801e-aa9f-f77a5229369f", slug: "synth-final", title: "Final", course: "Synthetic Architectures", semester: "Spring 2025", date: "2025-05-01", notionUrl: "https://www.notion.so/2dfa0a665b03801eaa9ff77a5229369f" },
 
   // Spring 2025 — Big LEDs
   { id: "1b4a0a66-5b03-806c-a7a2-c9684049ed5e", slug: "leds-week-1", title: "Week 1", course: "Big LEDs", semester: "Spring 2025", date: "2025-03-12", notionUrl: "https://www.notion.so/1b4a0a665b03806ca7a2c9684049ed5e" },
