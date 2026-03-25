@@ -13,38 +13,36 @@ export function WorkPage() {
   return (
     <PageTransition>
       <main className={styles.work}>
-        <h1 className={styles.heading}>Work</h1>
-
-        <div className={styles.filters}>
-          <button
-            type="button"
-            className={activeFilter === "all" ? styles.filterActive : styles.filter}
-            onClick={() => setActiveFilter("all")}
-          >
-            All
-          </button>
-          {categories.map((cat) => (
+        <div className={styles.topBar}>
+          <h1 className={styles.heading}>Work</h1>
+          <div className={styles.filters}>
             <button
               type="button"
-              key={cat.value}
-              className={activeFilter === cat.value ? styles.filterActive : styles.filter}
-              onClick={() => setActiveFilter(cat.value)}
+              className={activeFilter === "all" ? styles.filterActive : styles.filter}
+              onClick={() => setActiveFilter("all")}
             >
-              {cat.label}
+              All
             </button>
-          ))}
+            {categories.map((cat) => (
+              <button
+                type="button"
+                key={cat.value}
+                className={activeFilter === cat.value ? styles.filterActive : styles.filter}
+                onClick={() => setActiveFilter(cat.value)}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className={styles.grid}>
-          {filtered.map((project, index) => (
+          {filtered.map((project) => (
             <Link
               key={project.slug}
               to={`/work/${project.slug}`}
-              className={`${styles.card} ${index % 2 === 0 ? styles.cardLeft : styles.cardRight}`}
+              className={styles.card}
             >
-              <span className={styles.cardNumber}>
-                {String(index + 1).padStart(2, "0")}
-              </span>
               <div className={styles.cardImage}>
                 <img
                   src={project.thumbnail.url}

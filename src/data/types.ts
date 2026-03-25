@@ -5,19 +5,23 @@ export type ProjectCategory =
   | "mascot-branding"
   | "typography"
   | "projection-mapping"
-  | "creative-tech";
+  | "creative-tech"
+  | "visual-experiments";
 
 export type ProjectImage = {
   url: string;
   width: number;
   height: number;
   alt: string;
+  videoSrc?: string;
 };
 
 export type ProjectSection = {
   heading?: string;
   body: string;
   image?: ProjectImage;
+  images?: ProjectImage[];
+  videos?: string[];
   imagePosition?: "left" | "right";
 };
 
@@ -34,5 +38,9 @@ export type Project = {
   thumbnail: ProjectImage;
   images: ProjectImage[];
   sections?: ProjectSection[];
+  video?: string;
+  videos?: string[];
+  footerImage?: ProjectImage;
+  visualOnly?: boolean;
   featured: boolean;
 };

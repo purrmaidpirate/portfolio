@@ -25,74 +25,78 @@ import { generateChunkPlanesCached, getChunkUpdateThrottleMs, shouldThrottleUpda
 
 const PLANE_GEOMETRY = new THREE.PlaneGeometry(1, 1);
 
-function createCardTexture(width: number, height: number, label?: string, icon?: string): THREE.CanvasTexture {
-  const res = 512;
-  const canvasH = Math.round(res * (height / width));
-  const canvas = document.createElement("canvas");
-  canvas.width = res;
-  canvas.height = canvasH;
-  const ctx = canvas.getContext("2d")!;
+type ContentRect = { x: number; y: number; w: number; h: number };
 
-  // White fill
-  ctx.fillStyle = "#ffffff";
+// Draws Mac OS System 1-6 style window chrome onto a canvas context.
+// Returns the inner content area rect where image/video should be drawn.
+function drawMacFrame(ctx: CanvasRenderingContext2D, res: number, canvasH: number, label: string): ContentRect {
+  const border = 2;
+  const titleH = Math.round(res * 0.064); // ~33px at 512
+
+  // White background
+  ctx.fillStyle = "#fff";
   ctx.fillRect(0, 0, res, canvasH);
 
-  // Black outline
-  const stroke = Math.max(4, Math.round(res * 0.018));
-  ctx.strokeStyle = "#000000";
-  ctx.lineWidth = stroke;
-  ctx.strokeRect(stroke / 2, stroke / 2, res - stroke, canvasH - stroke);
-
-  // Optional icon image (drawn centered)
-  if (icon) {
-    const img = new Image();
-    img.onload = () => {
-      const maxSize = res * 0.5;
-      const ratio = Math.min(maxSize / img.width, maxSize / img.height);
-      const iw = img.width * ratio;
-      const ih = img.height * ratio;
-      const ix = (res - iw) / 2;
-      const iy = (canvasH - ih) / 2 - (label ? canvasH * 0.06 : 0);
-      ctx.drawImage(img, ix, iy, iw, ih);
-      if (label) drawLabel(ctx, res, canvasH, label, canvasH * 0.38);
-      tex.needsUpdate = true;
-    };
-    img.src = icon;
+  // Title bar: exactly 6 stripes centered vertically (Mac style)
+  const stripeCount = 6;
+  const stripeStep = 2; // 1px black + 1px gap
+  const stripesH = stripeCount * stripeStep - 1;
+  const stripesStartY = border + Math.round((titleH - stripesH) / 2);
+  ctx.fillStyle = "#000";
+  for (let i = 0; i < stripeCount; i++) {
+    ctx.fillRect(border, stripesStartY + i * stripeStep, res - border * 2, 1);
   }
 
-  // Optional text label (centered)
-  if (label && !icon) {
-    drawLabel(ctx, res, canvasH, label, canvasH / 2);
-  }
+  // Close box (left of title bar)
+  const boxPad = Math.round(titleH * 0.18);
+  const boxSize = titleH - boxPad * 2;
+  ctx.fillStyle = "#fff";
+  ctx.fillRect(border + boxPad, border + boxPad, boxSize, boxSize);
+  ctx.strokeStyle = "#000";
+  ctx.lineWidth = 1;
+  ctx.strokeRect(border + boxPad + 0.5, border + boxPad + 0.5, boxSize - 1, boxSize - 1);
 
-  const tex = new THREE.CanvasTexture(canvas);
-  return tex;
-}
-
-function drawLabel(ctx: CanvasRenderingContext2D, w: number, _h: number, text: string, y: number) {
-  const fontSize = Math.round(w * 0.055);
-  ctx.fillStyle = "#111111";
-  ctx.font = `400 ${fontSize}px "Space Grotesk", sans-serif`;
+  // Title text — white background rect, then text centered in bar
+  const fontSize = Math.round(titleH * 0.52);
+  ctx.font = `bold ${fontSize}px "ChiKareGo", monospace`;
+  const maxLen = Math.floor((res * 0.52) / Math.max(fontSize * 0.62, 1));
+  const displayLabel = label.length > maxLen ? `${label.slice(0, maxLen - 1)}…` : label;
+  const textW = ctx.measureText(displayLabel).width;
+  const hPad = Math.round(res * 0.02);
+  const whiteL = Math.round((res - textW) / 2) - hPad;
+  ctx.fillStyle = "#fff";
+  ctx.fillRect(whiteL, border, textW + hPad * 2, titleH);
+  ctx.fillStyle = "#000";
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  // wrap long text
-  const maxWidth = w * 0.78;
-  const words = text.split(" ");
-  const lines: string[] = [];
-  let line = "";
-  for (const word of words) {
-    const test = line ? `${line} ${word}` : word;
-    if (ctx.measureText(test).width > maxWidth && line) {
-      lines.push(line);
-      line = word;
-    } else {
-      line = test;
-    }
-  }
-  lines.push(line);
-  const lineH = fontSize * 1.4;
-  const startY = y - ((lines.length - 1) * lineH) / 2;
-  lines.forEach((l, i) => ctx.fillText(l, w / 2, startY + i * lineH));
+  ctx.fillText(displayLabel, res / 2, border + titleH / 2);
+
+  // Title bar bottom divider
+  ctx.fillStyle = "#000";
+  ctx.fillRect(border, border + titleH, res - border * 2, 1);
+
+  // Content area bounds (full width, no scrollbar)
+  const contentTopY = border + titleH + 1;
+  const contentBotY = canvasH - border;
+
+  // Outer border (drawn last so it's always on top)
+  ctx.strokeStyle = "#000";
+  ctx.lineWidth = border;
+  ctx.strokeRect(border / 2, border / 2, res - border, canvasH - border);
+
+  return { x: border, y: contentTopY, w: res - border * 2, h: contentBotY - contentTopY };
+}
+
+function drawImageIntoRect(ctx: CanvasRenderingContext2D, img: HTMLImageElement | HTMLVideoElement, cr: ContentRect, naturalW: number, naturalH: number) {
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(cr.x, cr.y, cr.w, cr.h);
+  ctx.clip();
+  const scale = Math.max(cr.w / naturalW, cr.h / naturalH);
+  const dw = naturalW * scale;
+  const dh = naturalH * scale;
+  ctx.drawImage(img, cr.x + (cr.w - dw) / 2, cr.y + (cr.h - dh) / 2, dw, dh);
+  ctx.restore();
 }
 
 const KEYBOARD_MAP = [
@@ -154,10 +158,106 @@ function MediaPlane({
   const materialRef = React.useRef<THREE.MeshBasicMaterial>(null);
   const localState = React.useRef({ opacity: 0, frame: 0 });
 
-  const texture = React.useMemo(
-    () => createCardTexture(media.width, media.height, media.label, media.icon),
-    [media.width, media.height, media.label, media.icon],
-  );
+  // Refs for animated content
+  const ctxRef = React.useRef<CanvasRenderingContext2D | null>(null);
+  const videoRef = React.useRef<HTMLVideoElement | null>(null);
+  const lastVideoTimeRef = React.useRef(-1);
+  const imageRef = React.useRef<HTMLImageElement | null>(null);
+  const isGifRef = React.useRef(false);
+  const lastGifFrameTime = React.useRef(0);
+
+  // Stable render order based on world position — prevents Three.js from re-sorting
+  // transparent planes by camera distance every frame (which causes flicker on drift)
+  const stableRenderOrder = React.useMemo(() => {
+    const hash = Math.abs(Math.round(position.x * 47.3 + position.y * 53.9 + position.z * 59.1));
+    return hash % 100000;
+  }, [position]);
+
+  const isAnimated = Boolean(media.videoSrc) || Boolean(media.icon?.toLowerCase().endsWith(".gif"));
+
+  // Build the Mac-framed CanvasTexture once per card (aspect ratio / label change).
+  // Content rect is stored in tex.userData.cr — avoids side-effects in useMemo.
+  const texture = React.useMemo(() => {
+    const res = 512;
+    const canvasH = Math.round(res * (media.height / media.width));
+    const canvas = document.createElement("canvas");
+    canvas.width = res;
+    canvas.height = canvasH;
+    const ctx = canvas.getContext("2d")!;
+    const cr = drawMacFrame(ctx, res, canvasH, media.label ?? "Untitled");
+    const tex = new THREE.CanvasTexture(canvas);
+    tex.userData.cr = cr as ContentRect;
+    // For animated cards (video/GIF), skip mipmap generation (costly to regenerate each frame)
+    if (isAnimated) {
+      tex.minFilter = THREE.LinearFilter;
+      tex.generateMipmaps = false;
+    }
+    return tex;
+  }, [media.width, media.height, media.label, isAnimated]);
+
+  // Cache the 2D context so useFrame doesn't call getContext() every tick
+  React.useEffect(() => {
+    ctxRef.current = (texture.image as HTMLCanvasElement).getContext("2d");
+  }, [texture]);
+
+  // Load static image (or GIF) into content rect
+  React.useEffect(() => {
+    if (!media.icon || media.videoSrc) return;
+
+    // Derive ctx and cr from the texture itself — always in sync, no stale refs
+    const canvas = texture.image as HTMLCanvasElement;
+    const ctx = canvas.getContext("2d");
+    const cr = texture.userData.cr as ContentRect | undefined;
+    if (!ctx || !cr) return;
+
+    const isGif = media.icon.toLowerCase().endsWith(".gif");
+    isGifRef.current = isGif;
+    imageRef.current = null;
+
+    const img = new Image();
+    // crossOrigin needed for cross-origin images so the canvas stays origin-clean for WebGL
+    if (!media.icon.startsWith("/")) img.crossOrigin = "anonymous";
+    img.onload = () => {
+      if (isGif) {
+        // Attach off-screen (NO opacity:0 — browsers pause GIF animation on invisible elements)
+        img.style.cssText = "position:fixed;left:-9999px;top:-9999px;width:1px;height:1px;pointer-events:none;";
+        document.body.appendChild(img);
+        imageRef.current = img;
+        lastGifFrameTime.current = 0;
+      }
+      drawImageIntoRect(ctx, img, cr, img.naturalWidth, img.naturalHeight);
+      texture.needsUpdate = true;
+    };
+    img.src = media.icon;
+
+    return () => {
+      if (img.parentNode) img.parentNode.removeChild(img);
+      imageRef.current = null;
+      isGifRef.current = false;
+    };
+  }, [media.icon, media.videoSrc, texture]);
+
+  // Set up / tear down video element
+  React.useEffect(() => {
+    lastVideoTimeRef.current = -1;
+    if (!media.videoSrc) {
+      videoRef.current = null;
+      return;
+    }
+    const video = document.createElement("video");
+    video.src = media.videoSrc;
+    video.loop = true;
+    video.muted = true;
+    video.playsInline = true;
+    video.autoplay = true;
+    video.play().catch(() => {});
+    videoRef.current = video;
+    return () => {
+      video.pause();
+      video.src = "";
+      videoRef.current = null;
+    };
+  }, [media.videoSrc]);
 
   useFrame(() => {
     const material = materialRef.current;
@@ -193,9 +293,36 @@ function MediaPlane({
     state.opacity = target < INVIS_THRESHOLD && state.opacity < INVIS_THRESHOLD ? 0 : lerp(state.opacity, target, 0.18);
 
     const isFullyOpaque = state.opacity > 0.99;
+    // Move opaque planes out of Three.js's transparent sort pass — this prevents
+    // the renderer from re-sorting every frame as the camera drifts, which is
+    // the primary cause of flickering when the mouse moves.
+    material.transparent = !isFullyOpaque;
     material.opacity = isFullyOpaque ? 1 : state.opacity;
     material.depthWrite = isFullyOpaque;
     mesh.visible = state.opacity > INVIS_THRESHOLD;
+
+    // Use cached ctx ref (set once per texture in useEffect, never re-computed per frame)
+    const ctx = ctxRef.current;
+    const cr = texture.userData.cr as ContentRect | undefined;
+
+    // Composite video frame — only when a new frame is available
+    const video = videoRef.current;
+    if (mesh.visible && video && ctx && cr && video.readyState >= 2 && video.currentTime !== lastVideoTimeRef.current) {
+      lastVideoTimeRef.current = video.currentTime;
+      drawImageIntoRect(ctx, video, cr, video.videoWidth, video.videoHeight);
+      texture.needsUpdate = true;
+    }
+
+    // Composite animated GIF frame — throttled to ~20fps
+    const gifImg = imageRef.current;
+    if (mesh.visible && isGifRef.current && gifImg && ctx && cr) {
+      const now = performance.now();
+      if (now - lastGifFrameTime.current > 50) {
+        lastGifFrameTime.current = now;
+        drawImageIntoRect(ctx, gifImg, cr, gifImg.naturalWidth, gifImg.naturalHeight);
+        texture.needsUpdate = true;
+      }
+    }
   });
 
   const handleClick = React.useCallback(
@@ -210,12 +337,12 @@ function MediaPlane({
 
   const handlePointerOver = React.useCallback(() => {
     if (media.slug && onPlaneClick) {
-      document.body.style.cursor = "pointer";
+      document.body.style.setProperty("cursor", "url('/cursor-click.png') 0 0, pointer", "important");
     }
   }, [media.slug, onPlaneClick]);
 
   const handlePointerOut = React.useCallback(() => {
-    document.body.style.cursor = "grab";
+    document.body.style.removeProperty("cursor");
   }, []);
 
   const displayScale = React.useMemo(() => {
@@ -229,6 +356,7 @@ function MediaPlane({
       position={position}
       scale={displayScale}
       visible={false}
+      renderOrder={stableRenderOrder}
       geometry={PLANE_GEOMETRY}
       onClick={handleClick}
       onPointerOver={handlePointerOver}
@@ -364,10 +492,8 @@ function SceneController({ media, onTextureProgress, onPlaneClick }: { media: Me
   React.useEffect(() => {
     const canvas = gl.domElement;
     const s = state.current;
-    canvas.style.cursor = "grab";
-
-    const setCursor = (cursor: string) => {
-      canvas.style.cursor = cursor;
+    const setDragging = (active: boolean) => {
+      document.documentElement.classList.toggle("dragging", active);
     };
 
     const onMouseDown = (e: MouseEvent) => {
@@ -376,19 +502,19 @@ function SceneController({ media, onTextureProgress, onPlaneClick }: { media: Me
       s.lastMouse = { x: e.clientX, y: e.clientY };
       interactionState.dragDistance = 0;
       interactionState.wasDragging = false;
-      setCursor("grabbing");
+      setDragging(true);
     };
 
     const onMouseUp = () => {
       interactionState.wasDragging = interactionState.dragDistance > 5;
       s.isDragging = false;
-      setCursor("grab");
+      setDragging(false);
     };
 
     const onMouseLeave = () => {
       s.mouse = { x: 0, y: 0 };
       s.isDragging = false;
-      setCursor("grab");
+      setDragging(false);
     };
 
     const onMouseMove = (e: MouseEvent) => {
@@ -414,7 +540,7 @@ function SceneController({ media, onTextureProgress, onPlaneClick }: { media: Me
       e.preventDefault();
       s.lastTouches = Array.from(e.touches) as Touch[];
       s.lastTouchDist = getTouchDistance(s.lastTouches);
-      setCursor("grabbing");
+      setDragging(true);
     };
 
     const onTouchMove = (e: TouchEvent) => {
@@ -441,7 +567,7 @@ function SceneController({ media, onTextureProgress, onPlaneClick }: { media: Me
     const onTouchEnd = (e: TouchEvent) => {
       s.lastTouches = Array.from(e.touches) as Touch[];
       s.lastTouchDist = getTouchDistance(s.lastTouches);
-      setCursor("grab");
+      setDragging(false);
     };
 
     canvas.addEventListener("mousedown", onMouseDown);
@@ -577,7 +703,7 @@ export function InfiniteCanvasScene({
   cameraFar = 500,
   fogNear = 120,
   fogFar = 320,
-  backgroundColor = "#ffffff",
+  backgroundColor: _backgroundColor = "#ffffff",
   fogColor = "#ffffff",
 }: InfiniteCanvasProps) {
   const isTouchDevice = useIsTouchDevice();
@@ -594,10 +720,9 @@ export function InfiniteCanvasScene({
           camera={{ position: [0, 0, INITIAL_CAMERA_Z], fov: cameraFov, near: cameraNear, far: cameraFar }}
           dpr={dpr}
           flat
-          gl={{ antialias: false, powerPreference: "high-performance" }}
+          gl={{ antialias: false, powerPreference: "high-performance", alpha: true }}
           className={styles.canvas}
         >
-          <color attach="background" args={[backgroundColor]} />
           <fog attach="fog" args={[fogColor, fogNear, fogFar]} />
           <SceneController media={media} onTextureProgress={onTextureProgress} onPlaneClick={onPlaneClick} />
           {showFps && <Stats className={styles.stats} />}

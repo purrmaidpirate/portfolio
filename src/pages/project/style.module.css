@@ -1,9 +1,11 @@
 .project {
   max-width: 960px;
   margin: 0 auto;
-  padding: 7rem 2.5rem 6rem;
+  padding: 112px 56px 112px;
   font-family: "Space Grotesk", sans-serif;
   color: #111;
+  background-color: #ffffff;
+  border: 1px solid #000000;
 }
 
 /* Painting hero — centered portrait, not full-bleed */
@@ -48,7 +50,7 @@
 }
 
 .title {
-  font-family: "Jacquard 12", serif;
+  font-family: "ChiKareGo", serif;
   font-size: clamp(2.25rem, 4.5vw, 3.25rem);
   font-weight: 400;
   font-style: normal;
@@ -164,6 +166,12 @@
   display: block;
 }
 
+.sectionImageGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
 /* Gallery fallback (projects without sections) */
 .gallery {
   display: flex;
@@ -177,6 +185,55 @@
   max-width: 680px;
   width: 100%;
   height: auto;
+  display: block;
+}
+
+/* Full-width footer image */
+.footerImage {
+  margin-bottom: 4rem;
+}
+
+.footerImage img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Final video */
+.videoWrap {
+  margin-bottom: 6rem;
+  display: flex;
+  justify-content: center;
+}
+
+.video {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  display: block;
+}
+
+/* Visual-only layout */
+.visualMedia {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 4rem;
+}
+
+.visualMediaCell {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.visualMediaItem {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 
@@ -226,7 +283,8 @@
 
 @media (max-width: 768px) {
   .project {
-    padding: 6rem 1.5rem 4rem;
+    padding: 112px 28px 112px;
+    margin: 0 auto;
   }
 
   .heroImage {

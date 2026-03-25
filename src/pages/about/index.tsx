@@ -38,9 +38,13 @@ export function AboutPage() {
             </p>
           </section>
           <div className={styles.portrait}>
-            <div className={styles.portraitPlaceholder}>
-              <span className={styles.portraitLabel}>Your photo here</span>
-            </div>
+            <img
+              src="/about-portrait.png"
+              alt="Ranjani Ramakrishnan — pixel portrait"
+              width={424}
+              height={466}
+              className={styles.portraitImage}
+            />
           </div>
         </div>
 

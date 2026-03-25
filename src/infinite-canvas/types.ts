@@ -7,6 +7,7 @@ export type MediaItem = {
   slug?: string;
   label?: string;   // optional text to render inside the card
   icon?: string;    // optional image URL to render inside the card
+  videoSrc?: string; // optional video URL to render as live texture
 };
 
 export type InfiniteCanvasProps = {

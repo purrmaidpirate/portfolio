@@ -1,27 +1,54 @@
 .work {
-  max-width: 1100px;
+  max-width: 1120px; /* 56 × 20 */
   margin: 0 auto;
-  padding: 7rem 2.5rem 6rem;
-  font-family: "Space Grotesk", sans-serif;
+  padding: 112px 56px 112px; /* 2×56 top, 1×56 sides, 2×56 bottom */
+  font-family: "ChiKareGo", monospace;
   color: #111;
 }
 
+/* Heading and filters stacked — no gap between them handled here */
+.topBar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  margin-bottom: 0;
+}
+
+/* 2 columns × 1 row = 112px × 56px */
 .heading {
-  font-family: "Jacquard 12", serif;
-  font-size: clamp(3rem, 6vw, 5rem);
+  width: 112px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  font-family: "ChiKareGo", serif;
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
   font-weight: 400;
   font-style: normal;
-  margin: 0 0 1.5rem;
+  margin: 0;
   letter-spacing: -0.02em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  padding: 0 0.75rem;
+  box-sizing: border-box;
 }
 
+/* 18 cells × 1 row = 1008px × 56px, aligned under heading */
 .filters {
+  width: 100%;
+  height: 56px;
+  margin-top: 0;
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  flex-wrap: nowrap;
   gap: 1.5rem;
-  margin-bottom: 3rem;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  padding: 0 1rem;
+  white-space: nowrap;
+  box-sizing: border-box;
 }
 
 .filter,
@@ -30,15 +57,14 @@
   border: none;
   border-radius: 0;
   padding: 0;
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 0.72rem;
+  font-family: "ChiKareGo", monospace;
+  font-size: 0.8rem;
   font-weight: 400;
   cursor: pointer;
   transition: all 0.3s ease;
   background: transparent;
   color: #bbb;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  letter-spacing: 0;
 }
 
 .filter:hover {
@@ -49,11 +75,13 @@
   color: #111;
 }
 
-/* Staggered 2-column grid */
+/* 3 cards × 6 cells wide = 1008px, centered within content area */
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem 3rem;
+  grid-template-columns: repeat(3, 336px);
+  gap: 0;
+  justify-content: center;
+  margin-top: 56px;
 }
 
 .card {
@@ -61,114 +89,101 @@
   color: inherit;
   display: flex;
   flex-direction: column;
-  transition: opacity 0.4s ease;
+  border: 1px solid #111;
+  margin-top: -1px; /* collapse borders */
+  margin-left: -1px;
+  background-color: #ffffff;
+  transition: background-color 0.2s ease;
 }
 
 .card:hover {
-  opacity: 0.75;
+  background-color: #f5f5f5;
   text-decoration: none;
   color: inherit;
-}
-
-/* Left column: flush */
-.cardLeft {
-  grid-column: 1;
-}
-
-/* Right column: offset down for stagger */
-.cardRight {
-  grid-column: 2;
-  margin-top: 6rem;
-}
-
-.cardNumber {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 0.6rem;
-  font-weight: 400;
-  color: #ccc;
-  letter-spacing: 0.1em;
-  margin-bottom: 0.75rem;
-  display: block;
 }
 
 .cardImage {
   overflow: hidden;
   background: #f0f0f0;
-  margin-bottom: 1rem;
+  aspect-ratio: 1 / 1;
+  width: 100%;
 }
 
 .cardImage img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card:hover .cardImage img {
-  transform: scale(1.03);
+  transform: scale(1.04);
 }
 
+/* 1 row = 56px */
 .cardInfo {
-  padding: 0;
+  height: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0.85rem;
+  border-top: 1px solid #111;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+
+.card:hover .cardInfo {
+  background-color: #f5f5f5;
 }
 
 .cardTitle {
-  font-family: "Jacquard 12", serif;
-  font-size: 1.2rem;
+  font-family: "ChiKareGo", monospace;
+  font-size: 0.8rem;
   font-weight: 400;
-  font-style: normal;
-  margin: 0 0 0.2rem;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: 0;
 }
 
 .cardCategory {
-  font-size: 0.6rem;
+  font-family: "ChiKareGo", monospace;
+  font-size: 0.8rem;
   color: #aaa;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0;
   font-weight: 400;
 }
 
 @media (max-width: 768px) {
   .work {
-    padding: 5rem 1.25rem 3rem;
+    padding: 112px 28px 112px;
   }
 
   .heading {
-    font-size: clamp(2.5rem, 8vw, 3.5rem);
-    margin-bottom: 1rem;
+    width: 112px;
+    height: 56px;
+    font-size: 1.2rem;
   }
 
   .filters {
-    gap: 0.75rem 1.25rem;
-    margin-bottom: 2rem;
+    width: 100%;
   }
 
   .grid {
-    grid-template-columns: 1fr;
-    gap: 0;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .work {
+    padding: 112px 0 112px;
   }
 
-  .cardLeft,
-  .cardRight {
-    grid-column: 1;
-    margin-top: 0;
+  .filters {
+    width: 100%;
   }
 
-  .card + .card {
-    margin-top: 2rem;
-  }
-
-  .cardNumber {
-    margin-bottom: 0.5rem;
-  }
-
-  .cardImage {
-    margin-bottom: 0.75rem;
-  }
-
-  .cardTitle {
-    font-size: 1.1rem;
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

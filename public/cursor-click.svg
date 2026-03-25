@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 85.17 110.22">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer_1">
+    <g>
+      <path class="cls-1" d="M80.16,45.09v-5.01h-5.01v-5.01h-10.02v-5.01h-15.03v-5.01h-10.02V5.01h-5.01V0h-10.02v5.01h-5.01v45.09h-5.01v-5.01H0v15.03h5.01v5.01h5.01v10.02h5.01v10.02h5.01v10.02h5.01v15.03h50.1v-15.03h5.01v-15.03h5.01v-35.07h-5.01Z"/>
+      <g>
+        <rect x="20.04" y="5.01" width="5.01" height="60.12"/>
+        <rect x="25.05" width="10.02" height="5.01"/>
+        <rect x="35.07" y="5.01" width="5.01" height="45.09"/>
+        <rect x="40.08" y="25.05" width="10.02" height="5.01"/>
+        <rect x="50.1" y="35.07" width="5.01" height="15.03"/>
+        <rect x="50.1" y="30.06" width="15.03" height="5.01"/>
+        <rect x="65.13" y="40.08" width="5.01" height="15.02"/>
+        <rect x="65.13" y="35.07" width="10.02" height="5.01"/>
+        <rect x="75.15" y="40.08" width="5.01" height="5.01"/>
+        <rect x="80.16" y="45.09" width="5.01" height="35.07"/>
+        <rect x="75.15" y="80.16" width="5.01" height="15.03"/>
+        <rect x="70.14" y="95.19" width="5.01" height="15.03"/>
+        <rect x="25.05" y="105.21" width="45.09" height="5.01"/>
+        <rect x="15.03" y="50.1" width="5.01" height="5.01"/>
+        <rect y="45.09" width="15.03" height="5.01"/>
+        <rect y="50.1" width="5.01" height="10.02"/>
+        <rect x="5.01" y="60.12" width="5.01" height="5.01"/>
+        <rect x="10.02" y="65.13" width="5.01" height="10.02"/>
+        <rect x="15.03" y="75.15" width="5.01" height="10.02"/>
+        <rect x="20.04" y="85.17" width="5.01" height="10.02"/>
+        <rect x="25.05" y="95.19" width="5.01" height="10.02"/>
+      </g>
+    </g>
+  </g>
+</svg>

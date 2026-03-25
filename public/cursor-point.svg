@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60.12 95.19">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer_1">
+    <g>
+      <path class="cls-1" d="M55.11,55.11v-5.01h-5.01v-5.01h-5.01v-5.01h-5.01v-5.01h-5.01v-5.01h-5.01v-5.01h-5.01v-5.01h-5.01v-5.01h-5.01v-5.01h-5.01v-5.01h-5.01V0H0v85.17h10.02v-5.01h5.01v-5.01h5.01v-5.01h5.01v10.02h5.01v10.02h5.01v5.01h10.02v-5.01h5.01v-10.02h-5.01v-10.02h-5.01v-5.01h20.04v-10.02h-5.01Z"/>
+      <g>
+        <rect width="5.01" height="85.17"/>
+        <rect x="5.01" y="5.01" width="5.01" height="5.01"/>
+        <rect x="10.02" y="10.02" width="5.01" height="5.01"/>
+        <rect x="15.03" y="15.03" width="5.01" height="5.01"/>
+        <rect x="20.04" y="20.04" width="5.01" height="5.01"/>
+        <rect x="25.05" y="25.05" width="5.01" height="5.01"/>
+        <rect x="30.06" y="30.06" width="5.01" height="5.01"/>
+        <rect x="35.07" y="35.07" width="5.01" height="5.01"/>
+        <rect x="40.08" y="40.08" width="5.01" height="5.01"/>
+        <rect x="45.09" y="45.09" width="5.01" height="5.01"/>
+        <rect x="50.1" y="50.1" width="5.01" height="5.01"/>
+        <rect x="55.11" y="55.11" width="5.01" height="5.01"/>
+        <rect x="35.07" y="60.12" width="25.05" height="5.01"/>
+        <rect x="35.07" y="65.13" width="5.01" height="5.01"/>
+        <rect x="20.04" y="65.13" width="5.01" height="5.01"/>
+        <rect x="25.05" y="70.14" width="5.01" height="10.02"/>
+        <rect x="30.06" y="80.16" width="5.01" height="10.02"/>
+        <rect x="35.07" y="90.18" width="10.02" height="5.01"/>
+        <rect x="40.08" y="70.14" width="5.01" height="10.02"/>
+        <rect x="45.09" y="80.16" width="5.01" height="10.02"/>
+        <rect x="15.03" y="70.14" width="5.01" height="5.01"/>
+        <rect x="10.02" y="75.15" width="5.01" height="5.01"/>
+        <rect x="5.01" y="80.16" width="5.01" height="5.01"/>
+      </g>
+    </g>
+  </g>
+</svg>

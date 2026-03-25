@@ -17,6 +17,51 @@ export function ProjectPage() {
 
   const hasSections = project.sections && project.sections.length > 0;
 
+  if (project.visualOnly) {
+    return (
+      <PageTransition>
+        <main className={styles.project}>
+          <div className={styles.visualMedia}>
+            {project.images.map((img, i) => (
+              <div key={i} className={styles.visualMediaCell}>
+                {img.videoSrc ? (
+                  <video
+                    src={img.videoSrc}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className={styles.visualMediaItem}
+                  />
+                ) : (
+                  <img
+                    src={img.url}
+                    alt={img.alt}
+                    className={styles.visualMediaItem}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+          <nav className={styles.projectNav}>
+            {prev ? (
+              <Link to={`/work/${prev.slug}`} className={styles.navPrev}>
+                <span className={styles.navLabel}>Previous</span>
+                <span className={styles.navTitle}>{prev.title}</span>
+              </Link>
+            ) : <div />}
+            {next ? (
+              <Link to={`/work/${next.slug}`} className={styles.navNext}>
+                <span className={styles.navLabel}>Next</span>
+                <span className={styles.navTitle}>{next.title}</span>
+              </Link>
+            ) : <div />}
+          </nav>
+        </main>
+      </PageTransition>
+    );
+  }
+
   return (
     <PageTransition>
       <main className={styles.project}>
@@ -66,6 +111,19 @@ export function ProjectPage() {
           )}
         </div>
 
+        {/* Full-width footer image */}
+        {project.footerImage && (
+          <div className={styles.footerImage}>
+            <img
+              src={project.footerImage.url}
+              alt={project.footerImage.alt}
+              width={project.footerImage.width}
+              height={project.footerImage.height}
+              loading="lazy"
+            />
+          </div>
+        )}
+
         {/* Narrative sections */}
         {hasSections ? (
           <div className={styles.sections}>
@@ -82,7 +140,35 @@ export function ProjectPage() {
                   )}
                   <p className={styles.sectionBody}>{section.body}</p>
                 </div>
-                {section.image && (
+                {section.videos && section.videos.length > 0 ? (
+                  <div className={styles.sectionImageGrid}>
+                    {section.videos.map((src, j) => (
+                      <video
+                        key={j}
+                        src={src}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className={styles.sectionImage}
+                      />
+                    ))}
+                  </div>
+                ) : section.images && section.images.length > 0 ? (
+                  <div className={styles.sectionImageGrid}>
+                    {section.images.map((img, j) => (
+                      <img
+                        key={j}
+                        src={img.url}
+                        alt={img.alt}
+                        width={img.width}
+                        height={img.height}
+                        loading="lazy"
+                        className={styles.sectionImage}
+                      />
+                    ))}
+                  </div>
+                ) : section.image ? (
                   <img
                     src={section.image.url}
                     alt={section.image.alt}
@@ -91,7 +177,7 @@ export function ProjectPage() {
                     loading="lazy"
                     className={styles.sectionImage}
                   />
-                )}
+                ) : null}
               </div>
             ))}
           </div>
@@ -109,6 +195,18 @@ export function ProjectPage() {
                 className={styles.galleryImage}
               />
             ))}
+          </div>
+        )}
+
+        {/* Final video */}
+        {project.video && (
+          <div className={styles.videoWrap}>
+            <video
+              src={project.video}
+              controls
+              playsInline
+              className={styles.video}
+            />
           </div>
         )}
 

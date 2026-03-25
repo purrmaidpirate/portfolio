@@ -6,13 +6,15 @@
   z-index: 100;
   text-align: center;
   pointer-events: none;
-  mix-blend-mode: difference;
-  color: #fff;
+  color: #111;
   white-space: nowrap;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  padding: 1.75rem 3.5rem;
 }
 
 .name {
-  font-family: "Jacquard 12", serif;
+  font-family: "ChiKareGo", serif;
   font-size: clamp(2rem, 5.5vw, 4.5rem);
   font-weight: 400;
   font-style: normal;
@@ -24,13 +26,12 @@
 }
 
 .role {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: clamp(0.65rem, 1.1vw, 0.85rem);
-  text-transform: uppercase;
-  letter-spacing: 0.25em;
+  font-family: "ChiKareGo", monospace;
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  font-weight: 400;
+  letter-spacing: 0;
   margin: 1rem 0 0;
   opacity: 0.6;
-  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -44,11 +45,10 @@
   z-index: 100;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  padding: 1.5rem 2.5rem;
+  align-items: stretch;
+  padding: 0;
   pointer-events: none;
-  mix-blend-mode: difference;
-  color: #fff;
+  color: #111;
   font-family: "Space Grotesk", sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
@@ -58,7 +58,7 @@
 
 .footer a {
   pointer-events: auto;
-  color: #fff;
+  color: #111;
   text-decoration: none;
   transition: opacity 0.3s ease;
 }
@@ -66,25 +66,35 @@
 .footer a:hover {
   opacity: 0.5;
   text-decoration: none;
-  color: #fff;
+  color: #111;
 }
 
 .footerCta {
+  height: 56px;
+  display: flex;
+  align-items: center;
   font-family: "Space Grotesk", sans-serif;
   font-style: normal;
   text-transform: none;
   letter-spacing: 0;
   font-size: 0.85rem;
   font-weight: 400;
-  color: #aff !important;
+  color: #111 !important;
   text-decoration: underline !important;
   text-underline-offset: 3px;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  padding: 0 1.25rem;
 }
 
 .footerRight {
+  height: 56px;
   display: flex;
   align-items: center;
   gap: 1.25rem;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  padding: 0 1.25rem;
 }
 
 .footerDivider {
