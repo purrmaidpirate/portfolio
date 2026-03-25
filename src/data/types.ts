@@ -25,6 +25,11 @@ export type ProjectSection = {
   imagePosition?: "left" | "right";
 };
 
+export type ProjectStat = {
+  value: string;
+  label: string;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -41,6 +46,7 @@ export type Project = {
   video?: string;
   videos?: string[];
   footerImage?: ProjectImage;
+  stats?: ProjectStat[];
   visualOnly?: boolean;
   featured: boolean;
 };

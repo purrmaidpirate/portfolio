@@ -111,6 +111,18 @@ export function ProjectPage() {
           )}
         </div>
 
+        {/* Stats */}
+        {project.stats && project.stats.length > 0 && (
+          <div className={styles.stats}>
+            {project.stats.map((stat, i) => (
+              <div key={i} className={styles.statItem}>
+                <span className={styles.statValue}>{stat.value}</span>
+                <span className={styles.statLabel}>{stat.label}</span>
+              </div>
+            ))}
+          </div>
+        )}
+
         {/* Full-width footer image */}
         {project.footerImage && (
           <div className={styles.footerImage}>
@@ -127,59 +139,40 @@ export function ProjectPage() {
         {/* Narrative sections */}
         {hasSections ? (
           <div className={styles.sections}>
-            {project.sections!.map((section, i) => (
-              <div
-                key={i}
-                className={`${styles.section} ${
-                  section.imagePosition === "left" ? styles.sectionFlipped : ""
-                }`}
-              >
-                <div className={styles.sectionText}>
-                  {section.heading && (
-                    <h2 className={styles.sectionHeading}>{section.heading}</h2>
-                  )}
-                  <p className={styles.sectionBody}>{section.body}</p>
-                </div>
-                {section.videos && section.videos.length > 0 ? (
-                  <div className={styles.sectionImageGrid}>
+            {project.sections!.map((section, i) => {
+                const hasMedia = (section.videos && section.videos.length > 0) ||
+                  (section.images && section.images.length > 0) ||
+                  !!section.image;
+
+                const media = section.videos && section.videos.length > 0 ? (
+                  <div className={section.videos.length > 1 ? styles.sectionImageGrid : undefined}>
                     {section.videos.map((src, j) => (
-                      <video
-                        key={j}
-                        src={src}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className={styles.sectionImage}
-                      />
+                      <video key={j} src={src} autoPlay loop muted playsInline className={styles.sectionImage} />
                     ))}
                   </div>
                 ) : section.images && section.images.length > 0 ? (
                   <div className={styles.sectionImageGrid}>
                     {section.images.map((img, j) => (
-                      <img
-                        key={j}
-                        src={img.url}
-                        alt={img.alt}
-                        width={img.width}
-                        height={img.height}
-                        loading="lazy"
-                        className={styles.sectionImage}
-                      />
+                      <img key={j} src={img.url} alt={img.alt} width={img.width} height={img.height} loading="lazy" className={styles.sectionImage} />
                     ))}
                   </div>
                 ) : section.image ? (
-                  <img
-                    src={section.image.url}
-                    alt={section.image.alt}
-                    width={section.image.width}
-                    height={section.image.height}
-                    loading="lazy"
-                    className={styles.sectionImage}
-                  />
-                ) : null}
-              </div>
-            ))}
+                  <img src={section.image.url} alt={section.image.alt} width={section.image.width} height={section.image.height} loading="lazy" className={styles.sectionImage} />
+                ) : null;
+
+                return (
+                  <div
+                    key={i}
+                    className={`${hasMedia ? styles.section : styles.sectionTextOnly} ${section.imagePosition === "left" ? styles.sectionFlipped : ""}`}
+                  >
+                    {hasMedia && <div className={styles.sectionMedia}>{media}</div>}
+                    <div className={styles.sectionText}>
+                      {section.heading && <h2 className={styles.sectionHeading}>{section.heading}</h2>}
+                      <p className={styles.sectionBody}>{section.body}</p>
+                    </div>
+                  </div>
+                );
+              })}
           </div>
         ) : (
           /* Gallery fallback for projects without sections */
