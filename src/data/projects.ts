@@ -430,9 +430,9 @@ export const projects: Project[] = [
     client: "ITP — Nature of Code",
     role: "3D Environment Designer & Developer",
     thumbnail: {
-      url: "/projects/turtle-walk/thumbnail.jpg",
-      width: 720,
-      height: 1280,
+      url: "/projects/turtle-walk/thumbnail.png",
+      width: 3024,
+      height: 1490,
       alt: "Virtual sea turtle walk experience — Unity 3D nighttime beach scene",
     },
     images: [],
@@ -541,10 +541,10 @@ export const projects: Project[] = [
     client: "ChaCha 420",
     role: "3D Character Designer & Technical Artist",
     thumbnail: {
-      url: "/projects/chacha-configurator/character-cover.jpg",
-      width: 598,
-      height: 598,
-      alt: "3D character in blue t-shirt and shorts striking a pose on white background",
+      url: "/projects/chacha-configurator/cover.png",
+      width: 1132,
+      height: 1136,
+      alt: "3D character in purple t-shirt and grey skirt mid-dance pose",
     },
     images: [],
     sections: [
@@ -624,13 +624,13 @@ export const projects: Project[] = [
     client: "Personal Project",
     role: "Creative Technologist",
     thumbnail: {
-      url: "/projects/visual-experiments/thumbnail.jpg",
+      url: "/projects/visual-experiments/animfinal.gif",
       width: 1080,
       height: 1080,
       alt: "Looping generative animation — abstract colourful forms",
     },
     images: [
-      { url: "/projects/visual-experiments/thumbnail.jpg", width: 1080, height: 1080, alt: "Generative animation still", videoSrc: "/projects/visual-experiments/animfinal.mp4" },
+      { url: "/projects/visual-experiments/animfinal.gif", width: 1080, height: 1080, alt: "Generative animation still", videoSrc: "/projects/visual-experiments/animfinal.mp4" },
       { url: "/projects/visual-experiments/td-still-0.jpg", width: 720, height: 1280, alt: "TouchDesigner visual 1", videoSrc: "/projects/visual-experiments/td-out-0.mp4" },
       { url: "/projects/visual-experiments/td-still-1.jpg", width: 720, height: 1280, alt: "TouchDesigner visual 2", videoSrc: "/projects/visual-experiments/td-out-1.mp4" },
       { url: "/projects/visual-experiments/td-still-2.jpg", width: 720, height: 1280, alt: "TouchDesigner visual 3", videoSrc: "/projects/visual-experiments/td-out-2.mp4" },
